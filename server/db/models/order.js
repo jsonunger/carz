@@ -1,7 +1,5 @@
 'use strict';
-var crypto = require('crypto');
 var mongoose = require('mongoose');
-var _ = require('lodash');
 
 var schema = new mongoose.Schema({
     user: {
@@ -12,6 +10,7 @@ var schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Car'
     }],
+    orderedCars: [mongoose.model('Car').schema],
     completed: {
         type: Boolean,
         default: false
@@ -24,7 +23,7 @@ var schema = new mongoose.Schema({
 
 schema.methods.getPrice = function () {
     return this.constructor.findById(this.id).populate('cars')
-    .then(cars => cars.reduce((total,car) => total += car.price,0));
+    .then(order => order.cars.reduce((total,car) => total += car.price,0));
 };
 
 schema.virtual('quantity').get(function () { return this.cars.length; });
