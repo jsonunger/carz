@@ -26,6 +26,6 @@ schema.methods.getPrice = function () {
     .then(order => order.cars.reduce((total,car) => total += car.price,0));
 };
 
-schema.virtual('quantity').get(function () { return this.cars.length; });
+schema.virtual('quantity').get(function () { return this.orderedCars.length ? this.orderedCars.length : this.cars.length; });
 
 mongoose.model('Order', schema);

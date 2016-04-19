@@ -86,7 +86,7 @@
     "no-caller": 0,             // disallow use of arguments.caller or arguments.callee
     "no-div-regex": 0,          // disallow division operators explicitly at beginning of regular expression (off by default)
     "no-else-return": 0,        // disallow else after a return in an if (off by default)
-    "no-empty-label": 1,        // disallow use of labels for anything other then loops and switches
+    "no-empty-label": 0,        // disallow use of labels for anything other then loops and switches
     "no-eq-null": 0,            // disallow comparisons to null without a type-checking operator (off by default)
     "no-eval": 0,               // disallow use of eval()
     "no-extend-native": 0,      // disallow adding to native types
@@ -109,7 +109,7 @@
     "no-process-env": 0,        // disallow use of process.env (off by default)
     "no-proto": 1,              // disallow usage of __proto__ property
     "no-redeclare": 1,          // disallow declaring the same variable more then once
-    "no-return-assign": 1,      // disallow use of assignment in return statement
+    "no-return-assign": 0,      // disallow use of assignment in return statement
     "no-script-url": 1,         // disallow use of javascript: urls.
     "no-self-compare": 0,       // disallow comparisons where both sides are exactly the same (off by default)
     "no-sequences": 0,          // disallow use of comma operator
@@ -187,7 +187,7 @@
     "padded-blocks": 0,             // enforce padding within blocks (off by default)
     "quote-props": 0,               // require quotes around object literal property names (off by default)
     "quotes": 0,                    // specify whether double or single quotes should be used
-    "semi": 0,                      // require or disallow use of semicolons instead of ASI
+    "semi": 1,                      // require or disallow use of semicolons instead of ASI
     "sort-vars": 0,                 // sort variables within the same declaration block (off by default)
     "space-after-function-name": 0, // require a space after function names (off by default)
     "space-after-keywords": 0,      // require a space after certain keywords (off by default)
