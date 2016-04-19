@@ -360,7 +360,7 @@ var seedReviews = function () {
 var seedOrders = function () {
     var orders = [
     {
-        user: '5716763ed4617af42940280b',
+        user: '5716955dc07aff84422e2e62',
         cars: ['5716763ed4617af42940281c', '5716763ed4617af429402819'],
         price: 30000+38000,
         shipping: {
@@ -377,7 +377,7 @@ var seedOrders = function () {
         }
     },
     {
-        user: '5716763ed4617af429402809',
+        user: '5716955dc07aff84422e2e60',
         cars: ['5716763ed4617af429402816', '5716763ed4617af42940281e'],
         price: 26000+30000,
         shipping: {
