@@ -34,4 +34,6 @@ router.delete('/:id', (req, res, next) => {
 
 router.use("/:id/orders", require('../order.js'));
 
+module.exports = router;
+
 
