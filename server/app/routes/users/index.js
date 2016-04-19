@@ -1,5 +1,5 @@
 
-var router = require('exrpress').Router();
+var router = require('express').Router();
 var User = mongoose.model('User');
 
 router.get('/', (req, res, next) => {
@@ -30,4 +30,8 @@ router.delete('/:id', (req, res, next) => {
 	User.findOneAndRemove({_id: req.params.id})
 	.then(()=> res.sendStatus(204))
 	.catch(next);
-})
+});
+
+router.use("/:id/orders", require('../order.js'));
+
+
