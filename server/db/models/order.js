@@ -18,6 +18,40 @@ var schema = new mongoose.Schema({
     price: {
         type: Number,
         default: 0
+    },
+    shipping: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        zip: {
+            type: String,
+            validator: function (v) {
+                return /^\d{5}$/.test(v);
+            }
+        }
+    },
+    billing: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        zip: {
+            type: String,
+            validator: function (v) {
+                return /^\d{5}$/.test(v);
+            }
+        }
     }
 });
 
@@ -26,6 +60,6 @@ schema.methods.getPrice = function () {
     .then(order => order.cars.reduce((total,car) => total += car.price,0));
 };
 
-schema.virtual('quantity').get(function () { return this.orderedCars.length ? this.orderedCars.length : this.cars.length; });
+schema.virtual('quantity').get(function () { return this.cars.length; });
 
 mongoose.model('Order', schema);

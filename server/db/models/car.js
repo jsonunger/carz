@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-    title: {
+    model: {
         type: String,
         required: true
     },
@@ -30,11 +30,21 @@ var schema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    category: {
+    type: {
         type: String,
         required: true,
-        enum: ['Sedan','Crossover','Luxury','Coupe','SUV','Hybird','Truck','Wagon','Hatchback','Convertible','Van','Electric']
+        enum: ['Car','Truck','SUV','Van','Minivan']
     }
 });
+
+schema.methods.getRating = function () {
+    return mongoose.model('Review').find({car: this.id})
+    .then(reviews => {
+        if (!reviews.length) return;
+        var sum = 0;
+        reviews.forEach(review => sum += review.stars);
+        return Math.floor(sum / reviews.length);
+    });
+};
 
 mongoose.model('Car', schema);

@@ -21,7 +21,14 @@ var schema = new mongoose.Schema({
         required: true,
         min: 1,
         max: 140
-    }
+    },
+    likes: Number,
+    dislikes: Number
 });
+
+// // BONUS
+// schema.virtual('weight').get(function () {
+//     return this.likes / (this.likes+this.dislikes > 0 ? this.likes+this.dislikes : 1);
+// });
 
 mongoose.model('Review', schema);

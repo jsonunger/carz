@@ -21,7 +21,7 @@ var schema = new mongoose.Schema({
     google: {
         id: String
     },
-    admin: {
+    isAdmin: {
         type: Boolean,
         default: false
     },
@@ -31,22 +31,35 @@ var schema = new mongoose.Schema({
             return /^\d{10}$/.test(v);
         }
     },
-    address: {
+    billing: {
         street: {
             type: String,
-            required: true
         },
         city: {
             type: String,
-            required: true
         },
         state: {
             type: String,
-            required: true
         },
         zip: {
             type: String,
-            required: true,
+            validator: function (v) {
+                return /^\d{5}$/.test(v);
+            }
+        }
+    },
+    shipping: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        zip: {
+            type: String,
             validator: function (v) {
                 return /^\d{5}$/.test(v);
             }
