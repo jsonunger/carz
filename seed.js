@@ -77,213 +77,242 @@ var seedCars = function () {
         price: 27000,
         make: 'Acura',
         year: 2015,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'MDX',
         price: 42500,
         make: 'Acura',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'V8 Vantage',
         price: 121000,
         make: 'Aston Martin',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'i3',
         price: 42000,
         make: 'BMW',
         year: 2015,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: '3 Series Gran Turismo',
         price: 43000,
         make: 'BMW',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Camaro',
         price: 23500,
         make: 'Chevrolet',
         year: 2015,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Corvette',
         price: 55000,
         make: 'Chevrolet',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Equinox',
         price: 23000,
         make: 'Chevrolet',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Silverado 2500HD',
         price: 30000,
         make: 'Chevrolet',
         year: 2015,
-        type: 'Truck'
+        type: 'Truck',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Expedition',
         price: 40000,
         make: 'Ford',
         year: 2015,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'F-150',
         price: 26000,
         make: 'Ford',
         year: 2016,
-        type: 'Truck'
+        type: 'Truck',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Focus',
         price: 16000,
         make: 'Ford',
         year: 2015,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Edge',
         price: 27500,
         make: 'Ford',
         year: 2015,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Grand Cherokee',
         price: 30000,
         make: 'Jeep',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Compass',
         price: 19500,
         make: 'Jeep',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Sienna',
         price: 28500,
         make: 'Toyota',
         year: 2016,
-        type: 'Minivan'
+        type: 'Minivan',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'GLK350',
         price: 38000,
         make: 'Mercedes-Benz',
         year: 2015,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Sprinter',
         price: 32500,
         make: 'Mercedes-Benz',
         year: 2016,
-        type: 'Van'
+        type: 'Van',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Charger',
         price: 30000,
         make: 'Dodge',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Challenger',
         price: 35000,
         make: 'Dodge',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Ram 1500',
         price: 35000,
         make: 'Dodge',
         year: 2016,
-        type: 'Truck'
+        type: 'Truck',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Durango',
         price: 19000,
         make: 'Dodge',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Q50',
         price: 50000,
         make: 'Infiniti',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Odyssey',
         price: 29400,
         make: 'Honda',
         year: 2016,
-        type: 'Minivan'
+        type: 'Minivan',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Q60',
         price: 75000,
         make: 'Infiniti',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Highlander',
         price: 28000,
         make: 'Toyota',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Aventador',
         price: 200000,
         make: 'Lamborghini',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Huracan',
         price: 100000,
         make: 'Lamborghini',
         year: 2016,
-        type: 'Car'
+        type: 'Car',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Range Rover Sport',
         price: 900000,
         make: 'Land Rover',
         year: 2016,
-        type: 'SUV'
+        type: 'SUV',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     },
     {
         model: 'Quest',
         price: 25000,
         make: 'Nissan',
         year: 2016,
-        type: 'Minivan'
+        type: 'Minivan',
+        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
     }
     ];
-
     return Car.create(cars);
 };
 
