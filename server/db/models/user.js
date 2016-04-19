@@ -5,7 +5,9 @@ var _ = require('lodash');
 
 var schema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        unique: true,
+        required: true
     },
     password: {
         type: String
@@ -13,17 +15,55 @@ var schema = new mongoose.Schema({
     salt: {
         type: String
     },
-    twitter: {
-        id: String,
-        username: String,
-        token: String,
-        tokenSecret: String
-    },
     facebook: {
         id: String
     },
     google: {
         id: String
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    phone: {
+        type: String,
+        validator: function (v) {
+            return /^\d{10}$/.test(v);
+        }
+    },
+    billing: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        zip: {
+            type: String,
+            validator: function (v) {
+                return /^\d{5}$/.test(v);
+            }
+        }
+    },
+    shipping: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        zip: {
+            type: String,
+            validator: function (v) {
+                return /^\d{5}$/.test(v);
+            }
+        }
     }
 });
 
