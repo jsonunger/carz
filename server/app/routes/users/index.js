@@ -44,7 +44,7 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-	if(req.user.isAdmin) {
+	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		User.remove(req.requestedUser)
 		.then(() => res.sendStatus(204))
 		.then(null, next);
