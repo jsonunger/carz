@@ -5,13 +5,13 @@ var User = mongoose.model('User');
 var Order = mongoose.model('Order');
 
 router.get('/', (req, res, next) => {
-	Order.find({user: req.loggedIn._id})
+	Order.find({user: req.loggedIn._id}).populate('cars')
 	.then((orders) => res.json(orders))
 	.then(null, next);
 });
 
 router.get('/:orderId',  (req, res, next) => {
-	Order.findById(req.params.orderId)
+	Order.findById(req.params.orderId).populate('cars')
 	.then((order) => res.json(order))
 	.then(null, next);
 });

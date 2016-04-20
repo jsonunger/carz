@@ -406,8 +406,8 @@ var seedOrders = function () {
     })
     .then(cars => {
         cars.forEach(car => carIds.push({id: car._id, price: car.price}));
-        var i = 2;
-        while (i--) {
+        var num = 2;
+        while (num--) {
             j = Math.floor(Math.random()*carIds.length);
             i = Math.floor(Math.random()*carIds.length);
             orders[0].cars.push(cars[j].id);
