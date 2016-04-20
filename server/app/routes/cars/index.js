@@ -41,3 +41,4 @@ router.delete('/:carId', (req, res, next) => {
 	.catch(next);
 });
 
+router.use('/:carId/reviews', require('./reviews'));

@@ -43,7 +43,7 @@ router.delete('/:id', (req, res, next) => {
 
 
 router.use("/:id/orders", require('../orders'));
-
+router.use('/:id/reviews', require('./reviews'));
 module.exports = router;
 
 
