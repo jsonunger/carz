@@ -361,9 +361,8 @@ var seedReviews = function () {
 var seedOrders = function () {
     var orders = [
     {
-        user: '5716955dc07aff84422e2e62',
-        cars: ['5716763ed4617af42940281c', '5716763ed4617af429402819'],
-        price: 30000+38000,
+        cars: [],
+        price: 0,
         shipping: {
             street: '5 Hanover Square, Fl. 25',
             city: 'New York',
@@ -378,9 +377,8 @@ var seedOrders = function () {
         }
     },
     {
-        user: '5716955dc07aff84422e2e60',
-        cars: ['5716763ed4617af429402816', '5716763ed4617af42940281e'],
-        price: 26000+30000,
+        cars: [],
+        price: 0,
         shipping: {
             street: '6 Empire State Avenue',
             city: 'New York',
@@ -394,21 +392,32 @@ var seedOrders = function () {
             zip: '23452'
         }
     }
-];
+    ];
 
-var userIds = [];
-    return User.find()
-    .then(function (users) {
-        users.forEach(user => userIds.push(user._id));
-        return orders.map(order => {
-            order.user = userIds[Math.floor(Math.random()*userIds.length)];
-            return order;
-        });
+    var carIds = [], j, i;
+    return User.findOne({email: 'i.mohamed037@gmail.com'})
+    .then(i => {
+        orders[1].user = i._id;
+        return User.findOne({email: 'jasonscottunger@gmail.com'});
     })
-    .then(modifiedOrders => Order.create(modifiedOrders))
-    .then(null, function (err) {
-        console.error(err);
-    });
+    .then(j => {
+        orders[0].user = j._id;
+        return Car.find();
+    })
+    .then(cars => {
+        cars.forEach(car => carIds.push({id: car._id, price: car.price}));
+        var i = 2;
+        while (i--) {
+            j = Math.floor(Math.random()*carIds.length);
+            i = Math.floor(Math.random()*carIds.length);
+            orders[0].cars.push(cars[j].id);
+            orders[0].price += cars[j].price;
+            orders[1].cars.push(cars[i].id);
+            orders[1].price += cars[i].price;
+        };
+        return Order.create(orders);
+    })
+    .catch(console.error.bind(console));
 };
 
 connectToDb
