@@ -21,11 +21,9 @@ router.get('/:orderId',  (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		Order.create(req.body)
 		.then((order) => res.status(201).json(order))
 		.then(null, next);
-	} else {res.sendStatus(401)}
 });
 
 router.put('/:orderId', (req, res, next) => {
