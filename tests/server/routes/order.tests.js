@@ -59,7 +59,7 @@ describe('Order Route', () => {
 
 		it('should add an order to a User', (done) => {
 			console.log('hey')
-			User.findOne({email: 'bill.gates@yourMom.com'})
+			User.findOne({email: 'bill.gates@com.com'})
 			.then((user) => {
 				console.log(user)
 				guestAgent.post('/api/users/' + user._id + '/orders')
