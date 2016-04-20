@@ -29,9 +29,8 @@ router.param('orderId', (req, res, next, orderId) => {
 });
 
 router.get('/:orderId',  (req, res, next) => {
-	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
-		res.json(req.order);
-	} else res.sendStatus(401);
+	if(req.user.isAdmin || req.user.equals(req.requestedUser)) res.json(req.order);
+	else res.sendStatus(401);
 });
 
 router.put('/:orderId', (req, res, next) => {
