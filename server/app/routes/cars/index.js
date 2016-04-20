@@ -6,7 +6,7 @@ module.exports = router;
 
 //Gets all cars, and filters if there's a query
 router.get('/', (req, res, next) => {
-	Car.find(req.query)
+	Car.find(req.query).where('quantity').gt(0)
 	.then(cars => res.json(cars))
 	.catch(next);
 });
