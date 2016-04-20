@@ -5,34 +5,44 @@ var User = mongoose.model('User');
 var Order = mongoose.model('Order');
 
 router.get('/', (req, res, next) => {
-	Order.find({user: req.loggedIn._id}).populate('cars')
-	.then((orders) => res.json(orders))
-	.then(null, next);
+	if(req.user.isAdmin || req.user.equals(req.loggedIn)) {
+		Order.find({user: req.loggedIn._id}).populate('cars')
+		.then((orders) => res.json(orders))
+		.then(null, next);
+	} else {res.sendStatus(401)}
 });
 
 router.get('/:orderId',  (req, res, next) => {
-	Order.findById(req.params.orderId).populate('cars')
-	.then((order) => res.json(order))
-	.then(null, next);
+	if(req.user.isAdmin || req.user.equals(req.loggedIn)) {
+		Order.findById(req.params.orderId).populate('cars')
+		.then((order) => res.json(order))
+		.then(null, next);
+	} else {res.sendStatus(401)}
 });
 
 router.post('/', (req, res, next) => {
-	Order.create(req.body)
-	.then((order) => res.status(201).json(order))
-	.then(null, next);
+	if(req.user.isAdmin || req.user.equals(req.loggedIn)) {
+		Order.create(req.body)
+		.then((order) => res.status(201).json(order))
+		.then(null, next);
+	} else {res.sendStatus(401)}
 });
 
 router.put('/:orderId', (req, res, next) => {
-	Order.findOneAndUpdate({_id: req.params.orderId}, req.body, 
-		{new: true, runValidators: true})
-	.then((order) => res.json(order))
-	.then(null, next);
+	if(req.user.isAdmin || req.user.equals(req.loggedIn)) {
+		Order.findOneAndUpdate({_id: req.params.orderId}, req.body, 
+			{new: true, runValidators: true})
+		.then((order) => res.json(order))
+		.then(null, next);
+	} else {res.sendStatus(401)}
 });
 
 router.delete('/:orderId', (req, res, next) => {
-	Order.findOneAndRemove({_id: req.params.orderId})
-	.then(() => res.sendStatus(204))
-	.then(null, next);
+	if(req.user.isAdmin) {
+		Order.findOneAndRemove({_id: req.params.orderId})
+		.then(() => res.sendStatus(204))
+		.then(null, next);
+	} else {res.sendStatus(401)}
 });
 
 module.exports = router;
