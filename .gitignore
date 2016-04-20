@@ -4,4 +4,4 @@ npm-debug.log
 public
 .DS_Store
 coverage
-tests/server/routes/order.tests.js
+order.tests.js
