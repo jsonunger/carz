@@ -32,7 +32,8 @@ var wipeCollections = function () {
     return Promise.all([
         User.remove({}),
         Car.remove({}),
-        Review.remove({})
+        Review.remove({}),
+        Order.remove({})
         ]);
 };
 
@@ -394,7 +395,20 @@ var seedOrders = function () {
         }
     }
 ];
-return Order.create(orders);
+
+var userIds = [];
+    return User.find()
+    .then(function (users) {
+        users.forEach(user => userIds.push(user._id));
+        return orders.map(order => {
+            order.user = userIds[Math.floor(Math.random()*userIds.length)];
+            return order;
+        });
+    })
+    .then(modifiedOrders => Order.create(modifiedOrders))
+    .then(null, function (err) {
+        console.error(err);
+    });
 };
 
 connectToDb
