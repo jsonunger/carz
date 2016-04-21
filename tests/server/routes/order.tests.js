@@ -22,15 +22,13 @@ describe('Order Route', () => {
 	});
 
 	beforeEach('Makes a user for tests', function(done) {
-		console.log('supertest', supertest);
 		guestAgent = supertest.agent(app);
-
 
 		var user1 = {
 			email: 'bill.gates@com.com',
 			password: "imBallin24/7",
 			isAdmin: true
-		}
+		};
 
 		User.create(user1)
 		.then((user) => {
@@ -50,10 +48,8 @@ describe('Order Route', () => {
 				user: foundUser._id
 			});
 		})
-		.then(() => {
-			done();
-		});
-	})
+		.then(() => done());
+	});
 
 	beforeEach("Makes a car", (done) => {
 		car = {
@@ -86,13 +82,13 @@ describe('Order Route', () => {
 				})
 				.expect(201);
 			})
-			.then(() => {return Order.find({cars: [car._id]})})
+			.then(() => Order.find({cars: [car._id]}))
 			.then((orders) => {
 				expect(orders.length).to.equal(1);
 				done();
 			})
 			.catch(done);
-		})
+		});
 	});
 
 	describe('deletes an order', function (done) {
@@ -104,11 +100,9 @@ describe('Order Route', () => {
 				.send({
 					user: user._id,
 					cars: [car._id]
-				})
+				});
 			})
-			.then((order) => {
-				done();
-			})
+			.then((order) => done())
 			.catch(done);
 		});
 
@@ -124,6 +118,6 @@ describe('Order Route', () => {
 			})
 			.then(() => done())
 			.catch(done);
-		})
-	})
+		});
+	});
 });
