@@ -119,5 +119,24 @@ describe('Order Route', () => {
 			.then(() => done())
 			.catch(done);
 		});
+		it("should update an order", (done)=>{
+            User.findOne({email: 'bill.gates@com.com'})
+            .then(foundUser => {
+                return Order.findOne({user: foundUser._id})
+            })
+            .then((order) => {
+                return guestAgent.put('/api/users/' + user._id + '/orders/' + order._id, {
+                        shipping: {
+                            street: "432 Park Ave",
+                            city: 'New York',
+                            state: 'NY',
+                            zipcode: 10001
+                       }
+                   })
+                .expect(200);
+            })
+            .then(() => done())
+            .catch(done);
+        }); 
 	});
 });
