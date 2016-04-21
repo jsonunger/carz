@@ -44,7 +44,7 @@ router.put('/:orderId', (req, res, next) => {
 
 router.delete('/:orderId', (req, res, next) => {
 	if(req.user.isAdmin) {
-		Order.findOneAndRemove({_id: req.order._id})
+		Order.findByIdAndRemove(req.order._id)
 		.then(() => res.sendStatus(204))
 		.then(null, next);
 	} else res.sendStatus(401);
