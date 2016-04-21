@@ -1,4 +1,20 @@
-<section id="home">
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
-</section>
+<div id="home" class="container">
+	<div class="row">
+		 <carousel interval="5000" class="col-md-12">
+	        <slide ng-repeat="image in images">
+            	<img height="300" ng-src="{{ image }}" />
+        	</slide>
+	    </carousel>
+
+	    <div class="col-md-3" ng-repeat="review in adminReviews">
+	    	<h4>{{review.name}}</h4>
+	    	<img ng-src="{{review.image}}"/>
+	    </div>
+ 
+	    <!-- <img class="col-md-3" src="http://fillmurray.com/300/300" />
+	    <img class="col-md-3" src="http://fillmurray.com/300/300" />
+	    <img class="col-md-3" src="http://fillmurray.com/300/300" />
+	    <img class="col-md-3" src="http://fillmurray.com/300/300" /> -->
+
+    </div>
+</div>
