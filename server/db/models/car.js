@@ -34,15 +34,17 @@ var schema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ['Car','Truck','SUV','Van','Minivan']
+    },
+    rating: {
+        type: Number
     }
 });
 
-schema.methods.getRating = function () {
+schema.methods.setRating = function () {
     return mongoose.model('Review').find({car: this.id})
-    .then(reviews => {
+    .then(function (reviews) {
         if (!reviews.length) return;
-        var sum = 0;
-        reviews.forEach(review => sum += review.stars);
+        var sum = reviews.reduce((total,review) => total + review.stars,0);
         return Math.floor(sum / reviews.length);
     });
 };

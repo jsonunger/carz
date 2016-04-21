@@ -31,4 +31,21 @@ var schema = new mongoose.Schema({
 //     return this.likes / (this.likes+this.dislikes > 0 ? this.likes+this.dislikes : 1);
 // });
 
+schema.post('save', function (doc,next) {
+    var car;
+    mongoose.model('Car').findById(doc.car)
+    .then(function (ourCar) {
+        car = ourCar;
+        return ourCar.setRating();
+    })
+    .then(function (rating) {
+        car.rating = rating;
+        return car.save();
+    })
+    .then(function () {
+        next();
+    })
+    .catch(next);
+});
+
 mongoose.model('Review', schema);
