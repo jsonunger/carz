@@ -5,7 +5,8 @@ var User = mongoose.model('User');
 var Order = mongoose.model('Order');
 
 router.get('/', (req, res, next) => {
-	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
+    if(!req.user) res.sendStatus(401);
+	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		Order.find({user: req.requestedUser._id}).populate('cars')
 		.then((orders) => res.json(orders))
 		.then(null, next);
@@ -29,12 +30,14 @@ router.param('orderId', (req, res, next, orderId) => {
 });
 
 router.get('/:orderId',  (req, res, next) => {
-	if(req.user.isAdmin || req.user.equals(req.requestedUser)) res.json(req.order);
+    if(!req.user) res.sendStatus(401);
+	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) res.json(req.order);
 	else res.sendStatus(401);
 });
 
 router.put('/:orderId', (req, res, next) => {
-	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
+    if(!req.user) res.sendStatus(401);
+	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		Object.keys(req.body).forEach(key => req.order[key] = req.body[key]);
 		req.order.save()
 		.then((updatedOrder) => res.json(updatedOrder))
@@ -43,11 +46,13 @@ router.put('/:orderId', (req, res, next) => {
 });
 
 router.delete('/:orderId', (req, res, next) => {
-	if(req.user.isAdmin) {
+    if(!req.user) res.sendStatus(401);
+    else if(!req.user.isAdmin) res.sendStatus(403)
+    else {
 		Order.findByIdAndRemove(req.order._id)
 		.then(() => res.sendStatus(204))
 		.then(null, next);
-	} else res.sendStatus(401);
+	}
 });
 
 module.exports = router;
