@@ -31,40 +31,8 @@ var schema = new mongoose.Schema({
             return /^\d{10}$/.test(v);
         }
     },
-    billing: {
-        street: {
-            type: String,
-        },
-        city: {
-            type: String,
-        },
-        state: {
-            type: String,
-        },
-        zip: {
-            type: String,
-            validator: function (v) {
-                return /^\d{5}$/.test(v);
-            }
-        }
-    },
-    shipping: {
-        street: {
-            type: String,
-        },
-        city: {
-            type: String,
-        },
-        state: {
-            type: String,
-        },
-        zip: {
-            type: String,
-            validator: function (v) {
-                return /^\d{5}$/.test(v);
-            }
-        }
-    }
+    shipping: mongoose.model('Address').schema,
+    billing: mongoose.model('Address').schema
 });
 
 // method to remove sensitive information from user objects before sending them out

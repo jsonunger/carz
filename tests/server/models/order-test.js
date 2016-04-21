@@ -106,17 +106,15 @@ describe('Order model', function () {
          .catch(done);
       });
 
-      // // Does not work, cannot determine why
-      //
-      // it('should remove the car from other orders if quantity is now 0', function (done) {
-      //    Order.findById(orders[1]._id)
-      //    .then(function (order) {
-      //       expect(order.cars).to.not.include(cars[1]._id);
-      //       expect(order.cars).to.include(cars[0]._id);
-      //       done();
-      //    })
-      //    .catch(done);
-      // });
+      it('should remove the car from other orders if quantity is now 0', function (done) {
+         Order.findById(orders[1]._id)
+         .then(function (order) {
+            expect(order.cars).to.not.include(cars[1]._id);
+            expect(order.cars).to.include(cars[0]._id);
+            done();
+         })
+         .catch(done);
+      });
    });
 });
 
