@@ -137,6 +137,6 @@ describe('Order Route', () => {
             })
             .then(() => done())
             .catch(done);
-        }); 
+        });
 	});
 });

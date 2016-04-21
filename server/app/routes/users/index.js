@@ -29,14 +29,16 @@ router.param('id', function(req, res, next, id){
 });
 
 router.get("/:id", (req, res, next) => {
+    if(!req.user) res.sendStatus(401);
 	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		res.json(req.requestedUser);
 	} else {res.sendStatus(401)}
 });
 
 router.put('/:id', (req, res, next) => {
+    if(!req.user) res.sendStatus(401);
 	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
-		User.update(req.requestedUser, req.body, 
+		User.update(req.requestedUser, req.body,
 			{new: true, runValidators: true})
 		.then((user) => res.json(user))
 		.then(null, next);
@@ -44,6 +46,7 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
+    if(!req.user) res.sendStatus(401);
 	if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		User.remove(req.requestedUser)
 		.then(() => res.sendStatus(204))
