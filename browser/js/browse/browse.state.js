@@ -4,9 +4,8 @@ app.config(function ($stateProvider) {
       templateUrl: 'js/browse/browse.html',
       controller: 'BrowseCtrl',
       resolve: {
-         cars: function ($http) {
-            return $http.get('/api/cars')
-            .then(res => res.data);
+         cars: function (CarFactory) {
+            return CarFactory.getCars();
          }
       }
    });
