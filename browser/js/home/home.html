@@ -1,20 +1,16 @@
-<div id="home" class="container">
-	<div class="row">
-		 <carousel interval="5000" class="col-md-12">
-	        <slide ng-repeat="image in images">
-            	<img height="300" ng-src="{{ image }}" />
-        	</slide>
-	    </carousel>
-
-	    <div class="col-md-3" ng-repeat="review in adminReviews">
-	    	<h4>{{review.name}}</h4>
-	    	<img ng-src="{{review.image}}"/>
-	    </div>
- 
-	    <!-- <img class="col-md-3" src="http://fillmurray.com/300/300" />
-	    <img class="col-md-3" src="http://fillmurray.com/300/300" />
-	    <img class="col-md-3" src="http://fillmurray.com/300/300" />
-	    <img class="col-md-3" src="http://fillmurray.com/300/300" /> -->
-
+<div class="row" id="home">
+    <carousel interval="5000" class="col-md-12">
+        <slide ng-repeat="image in images">
+            <img height="300" ng-src="{{ image }}" />
+        </slide>
+    </carousel>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="review in adminReviews">
+                <img class="img-circle" ng-src="{{review.image}}" />
+                <h2>{{review.name}}</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum accusantium atque reiciendis velit odit, optio, illum voluptatem autem, voluptas modi nobis ad consequatur quibusdam cupiditate unde explicabo veritatis cum! Dignissimos?</p>
+            </div>
+        </div>
     </div>
 </div>
