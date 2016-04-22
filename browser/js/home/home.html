@@ -1,9 +1,9 @@
 <div class="row" id="home">
-    <carousel interval="5000" class="col-md-12">
-        <slide ng-repeat="image in images">
+    <uib-carousel interval="5000" class="col-md-12">
+        <uib-slide ng-repeat="image in images">
             <img height="300" ng-src="{{ image }}" />
-        </slide>
-    </carousel>
+        </uib-slide>
+    </uib-carousel>
     <div class="container">
         <div class="row">
             <div class="col-md-3" ng-repeat="review in adminReviews">
