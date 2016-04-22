@@ -1,0 +1,18 @@
+.filter {
+   margin-top: 15px;
+   ul {
+      list-style: none;
+      li:hover {
+         font-weight: bold;
+      }
+   }
+   .filter-title {
+   font-size: 150%;
+   padding-left: 15px;
+   font-family: sans-serif;
+   margin-bottom: 15px;
+   }
+   input {
+      margin-right: 5px;
+   }
+}
