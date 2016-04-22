@@ -3,7 +3,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
     return {
         restrict: 'E',
         scope: {},
-        templateUrl: 'js/common/directives/navbar/navbar.html',
+        templateUrl: 'js/navbar/navbar.html',
         link: function (scope) {
 
             scope.items = [
@@ -15,6 +15,8 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             scope.admin = { label: 'Admin Tools', state: 'admin', auth: true};
 
             scope.user = null;
+
+            scope.navCollapse = true;
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
