@@ -16,6 +16,8 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             scope.user = null;
 
+            scope.navCollapse = true;
+
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
             };
