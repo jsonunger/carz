@@ -3,4 +3,4 @@ app.config(function ($stateProvider) {
         url: '/docs',
         templateUrl: 'js/docs/docs.html'
     });
-});
+})
