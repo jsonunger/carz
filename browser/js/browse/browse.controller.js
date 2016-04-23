@@ -6,6 +6,7 @@ app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFac
    $scope.makeCollapse = true;
    $scope.yearCollapse = true;
    $scope.typeCollapse = true;
+
    $scope.filter = () => {
 
       $scope.cars = cars;
@@ -41,5 +42,4 @@ app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFac
             filtered.includes(car.type));
       });
    };
-
 });
