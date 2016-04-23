@@ -7,38 +7,40 @@ app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFac
    $scope.yearCollapse = true;
    $scope.typeCollapse = true;
    $scope.filter = () => {
-
-	   	let checkedMakes = $scope.makes.filter((make)=>{
-            // if(!make.checked) return; 
-	   		return make.checked.name;
-	   	})
-	   	let checkedYears = $scope.years.filter((year)=>{
-            // if(!year.checked) return; 
-	   		return year.checked.name;
-	   	})
-	   	let checkedTypes = $scope.types.filter((type)=>{
-            // if(!type.checked) return; 
-	   		return type.checked.name;
-	   	})
-
-         if(checkedMakes.length === 0){
-            checkedMakes = $scope.makes;
+      function isEmpty(resultArray, checkArray, scopeArray, type) {
+         console.log(checkArray);
+         if(checkArray.length === 0){
+            resultArray.concat(scopeArray.map(function(car){
+               car[type];
+            }));
          }
+      }
+      var filtered = []
+	   	var checkedMakes = $scope.makes.forEach((make)=>{
+	   		if(make.checked){
+               filtered.push(make.name);
+            }
+	   	});
+	   	var checkedYears = $scope.years.forEach((year)=>{
+            if(year.checked){
+               filtered.push(year.name);
+            }
+	   	});
+	   	var checkedTypes = $scope.types.forEach((type)=>{
+           if(type.checked){
+               filtered.push(type.name);
+            }
+	   	});
 
-         checkedYears = checkedYears.length ? checkedYears : $scope.years;
-         checkedTypes = checkedTypes.length ? checkedTypes : $scope.types;
+         isEmpty(filtered, checkedMakes, $scope.makes, 'make');
+         isEmpty(filtered, checkedYears, $scope.years, 'year');
+         isEmpty(filtered, checkedTypes, $scope.types, 'type');
 
-
-         var queryObj = {
-            make: { $in: checkedMakes || $scope.makes },
-            year: { $in: checkedYears || $scope.years },
-            type: { $in: checkedTypes || $scope.types }
-         }
-
-         CarFactory.getCars(queryObj)
-         .then(function(cars){
-            $scope.cars = cars;
-         });
+         $scope.cars = $scope.cars.filter((car)=>{
+            return (filtered.includes(car.make) &&
+               filtered.includes(car.year) &&
+               filtered.includes(car.type));
+         })
 
    };
 
