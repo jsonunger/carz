@@ -11,9 +11,11 @@ router.get('/', (req,res,next) => {
 });
 
 router.post('/', (req,res,next) => {
-  Review.create(req.body)
-  .then(newReview => res.status(201).json(newReview))
-  .catch(next);
+  if (req.user) {
+    Review.create(req.body)
+    .then(newReview => res.status(201).json(newReview))
+    .catch(next);
+  } else res.sendStatus(401);
 });
 
 router.param('reviewId', (req, res, next, reviewId)=>{
@@ -26,14 +28,19 @@ router.param('reviewId', (req, res, next, reviewId)=>{
 });
 
 router.put('/:reviewId', (req, res, next) => {
-	Object.keys(req.body).forEach(key => req.review[key] = req.body[key]);
-	req.review.save()
-	.then(updatedReview => res.json(updatedReview))
-	.catch(next);
+  if (req.user && (req.user._id === req.review.user || req.user.admin)) {
+  	Object.keys(req.body).forEach(key => req.review[key] = req.body[key]);
+  	req.review.save()
+  	.then(updatedReview => res.json(updatedReview))
+  	.catch(next);
+  } else res.sendStatus(401);
+
 });
 
 router.delete('/:reviewId', (req, res, next) => {
-	Review.remove(req.review)
-	.then(() => res.sendStatus(204))
-	.catch(next);
+  if (req.user && (req.user._id === req.review.user || req.user.admin)) {
+  	Review.remove(req.review)
+  	.then(() => res.sendStatus(204))
+  	.catch(next);
+  } else res.sendStatus(401);
 });
