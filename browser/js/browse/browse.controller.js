@@ -40,7 +40,6 @@ app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFac
             filtered.includes(car.year) &&
             filtered.includes(car.type));
       });
-
    };
 
 });
