@@ -25,7 +25,7 @@
          </div>
          <div class="col-xs-10" style="overflow: auto">
             <div class="row">
-               <div class="col-xs-4" ng-repeat="car in cars">
+               <div class="col-xs-4" ng-repeat="car in cars | carFilter:makes:years:types">
                   <a class="thumbnail" ui-sref="car({carId: car._id})">
                      <img ng-src="{{ car.photo }}">
                      <div class="caption">
