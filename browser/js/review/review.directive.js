@@ -5,6 +5,11 @@ app.directive('review', function () {
       scope: {
          review: '=',
          type: '@'
+      },
+      link: function (scope, iElem, iAttrs) {
+         scope.rating = function (num) {
+            return new Array(num);
+         };
       }
    };
 });

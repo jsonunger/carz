@@ -27,11 +27,13 @@
                 </table>
                 </div>
             </div>
-                <div class="row">
-                    <uib-rating read-only="isReadOnly" ng-model="rate"></uib-rating>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <uib-rating read-only="isReadOnly" ng-model="rate"></uib-rating>
                 <!-- reviews directive -->
-                <p>Review Directive Goes Here!</p>
+                <review class="col-xs-12" ng-repeat="review in reviews" review="review" type="car"></review>
+            </div>
         </div>
     </div>
 </section>

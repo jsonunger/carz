@@ -9,6 +9,9 @@ app.config(function($stateProvider) {
             },
             user: function(AuthService) {
                 return AuthService.getLoggedInUser();
+            },
+            reviews: function (ReviewFactory, currentCar) {
+                return ReviewFactory.getCarReviews(currentCar._id);
             }
         }
     });
