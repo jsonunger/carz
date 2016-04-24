@@ -5,7 +5,6 @@ app.factory('UserFactory', ($http) => {
 	var parseData = res => res.data;
 
 	UserFactory.getUser = (id) => {
-		console.log("IM AN ID",id)
 		return $http.get('/api/users/' + id)
 		.then(parseData);
 	};
