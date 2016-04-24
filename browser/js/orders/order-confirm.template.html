@@ -7,61 +7,91 @@
             <div class="col-xs-3">
                 <h5>Current Address:</h5>
             </div>
-            <div class="col-xs-7">
-                <p>First Last</p>
-                <P>200 Neverland ranch</p>
-                <p>City, State, Zip Code</p>
+            <div class="col-xs-6">
+                <address>
+                    <strong>Immad Mohamed</strong>
+                    <br> 5 Hanover Square
+                    <br> New York, NY 10004
+                    <br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                </address>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <button type="button" class="btn btn-info" ng-click="addAddress()">Change</button>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="sameAddress"> Same for Billing?
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="page-header">
                 <h3>Billing & Payment</h3>
             </div>
+            <div ng-hide="sameAddress">
             <div class="col-xs-3">
                 <h5>Billing Address:</h5>
             </div>
-            <div class="col-xs-7">
-                <p></p>
+            <div class="col-xs-6">
+                <address>
+                    <strong>Immad Mohamed</strong>
+                    <br> 5 Hanover Square
+                    <br> New York, NY 10004
+                    <br>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                </address>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-3">
                 <button type="button" class="btn btn-info" ng-click="addAddress()">Change</button>
             </div>
+            </div>
         </div>
+        <br>
+        <div class="row">
+        	<div class="col-xs-3">
+        		<h5>Payment:</h5>
+        	</div>
+        	<div class="col-xs-6">
+        		<p>Add Stripe here?</p>
+        	</div>
+        	<div class="col-xs-3">
+        		<p>Something Here?<p>
+        	</div>
+        </div>
+        <br>
     </div>
     <div class="col-md-3 col-sm-12 text-center">
-            <button type="button" class="btn btn-info btn-block" ng-click="addAddress()">Place Your Order</button>
-            <h4>Order Summary</h4>
-            <br>
-            <table class="table table-hover">
-                <tr>
-                    <td>Items:</td>
-                    <td>Total</td>
-                </tr>
-                <tr>
-                    <td>Shipping:</td>
-                    <td>Cost</td>
-                </tr>
-            </table>
-            <br>
-            <table class="table table-hover">
-                <tr>
-                    <td>Total:</td>
-                    <td>Total</td>
-                </tr>
-                <tr>
-                    <td>Estimated Tax:</td>
-                    <td>Cost</td>
-                </tr>
-                <tr>
-                    <td>Promos:</td>
-                    <td>Cost</td>
-                </tr>
-            </table>
-            <br>
-            <h4>Order Total:</h4>
-            <p>Total</p>
-        </div>
+        <button type="button" class="btn btn-info btn-block" ng-click="addAddress()">Place Your Order</button>
+        <h4>Order Summary</h4>
+        <br>
+        <table class="table table-hover">
+            <tr>
+                <td>Items:</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>Shipping:</td>
+                <td>Cost</td>
+            </tr>
+        </table>
+        <br>
+        <table class="table table-hover">
+            <tr>
+                <td>Total:</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>Estimated Tax:</td>
+                <td>Cost</td>
+            </tr>
+            <tr>
+                <td>Promos:</td>
+                <td>Cost</td>
+            </tr>
+        </table>
+        <br>
+        <h4>Order Total:</h4>
+        <p>Total</p>
+    </div>
 </div>

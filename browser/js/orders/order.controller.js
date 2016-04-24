@@ -17,7 +17,8 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal){
 		});
 	};
 
-
+	$scope.test = () => console.log($scope.sameAddress);
+	
 	$scope.confirm = function(){
 		$state.go('order-confirm');
 	};
