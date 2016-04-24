@@ -1,11 +1,10 @@
 <section id="admin">
 	<div class="container">
 		<div>
-			<button class="btn btn-success">user</button>
-			<button class="btn btn-success">order</button>
-			<button class="btn btn-success">product</button>
+			<button class="btn btn-success" ui-sref="admin.user">user</button>
+			<button class="btn btn-success" ui-sref="admin.order">order</button>
+			<button class="btn btn-success" ui-sref="admin.product">product</button>
 		</div>
-		<div ui-view></div>
-		
+		<ui-view></ui-view>
 	</div>
 </section>

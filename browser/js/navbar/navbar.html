@@ -16,7 +16,7 @@
                         <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                     </li>
                     <li ng-show="user.isAdmin">
-                        <a ui-sref-active="active">{{ admin.label }}</a>
+                        <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
                     </li>
                 </ul>
                 <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
