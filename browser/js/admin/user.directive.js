@@ -7,12 +7,10 @@ app.directive('user', (OrderFactory)=> {
 		scope:{
 			users: "="
 		},
-		link: (scope) => {
-
+		link: (scope, element) => {
 			scope.getOrders = (id) => {
 				OrderFactory.getCart(id)
 				.then((cart) => {
-					console.log('CART', cart);
 					scope.cart = cart
 				});
 			}

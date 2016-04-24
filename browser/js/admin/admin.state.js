@@ -9,6 +9,9 @@ app.config($stateProvider => {
 			users: (UserFactory, $http) => {
 				return $http.get('/api/users')
 				.then(res => res.data);
+			},
+			cars: (CarFactory, $http) => {
+				return CarFactory.getCars();
 			}
 		}
 	})

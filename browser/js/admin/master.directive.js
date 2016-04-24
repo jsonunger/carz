@@ -1,15 +1,14 @@
 
 
-app.directive('master', ()=> {
+app.directive('master', () => {
 	return {
 		restrict: 'E',
 		templateUrl: '/js/admin/master.html',
 		scope:{
 			masterObj: '='
 		},
-		link: (scope) => {
+		link: (scope, element) => {
 			console.log("HELLO", scope.masterObj);
-			
 		}
 	}
 })

@@ -1,3 +1,4 @@
-app.controller('AdminCtrl', ($scope, users) => {
+app.controller('AdminCtrl', ($scope, users, cars) => {
 	$scope.users = users;
+	$scope.cars = cars;
 })
