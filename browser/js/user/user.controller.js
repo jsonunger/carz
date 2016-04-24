@@ -16,5 +16,5 @@ app.controller('UserCtrl', function($scope, UserFactory, user) {
 			billing: $scope.newUserObj.billing[1]
 		});
 	}
-	//console.log($scope)
+	console.log(user);
 });
