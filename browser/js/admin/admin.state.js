@@ -6,7 +6,7 @@ app.config($stateProvider => {
 		templateUrl: '/js/admin/admin.html',
 		controller: 'AdminCtrl',
 		resolve: {
-			user: (UserFactory, $http) => {
+			users: (UserFactory, $http) => {
 				return $http.get('/api/users')
 				.then(res => res.data);
 			}
@@ -15,10 +15,6 @@ app.config($stateProvider => {
 	.state('admin.user', {
 		url:'/user',
 		templateUrl: '/js/admin/admin.user.html'
-	})
-	.state('admin.order', {
-		url:'/order',
-		templateUrl: '/js/admin/admin.order.html'
 	})
 	.state('admin.product', {
 		url:'/product',

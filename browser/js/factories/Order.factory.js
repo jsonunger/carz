@@ -5,11 +5,9 @@ app.factory('OrderFactory', function($http){
 
 	//http://localhost:1337/api/users/5719795771a36ba959db387f/orders
 
-	OrderFactory.getCart = function(){
-		return $http.get(orderUrl)
-		.then(function(cart){
-			console.log("this is info", cart);
-		});
+	OrderFactory.getCart = function(id){
+		return $http.get('/api/users/' + id + '/orders')
+		.then(parseData);
 	};
 
 	// OrderFactory.newCart = function(){

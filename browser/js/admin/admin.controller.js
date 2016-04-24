@@ -1,3 +1,3 @@
-app.controller('AdminCtrl', ($scope, user) => {
-	$scope.user = user;
+app.controller('AdminCtrl', ($scope, users) => {
+	$scope.users = users;
 })
