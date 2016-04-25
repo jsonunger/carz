@@ -2,6 +2,7 @@
 var router = require('express').Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var _ = require('lodash');
 
 router.get('/', (req, res, next) => {
 	if(!req.user) res.sendStatus(401);
@@ -40,9 +41,9 @@ router.get("/:id", (req, res, next) => {
 router.put('/:id', (req, res, next) => {
     if(!req.user) res.sendStatus(401);
 	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
-		User.update(req.requestedUser, req.body,
-			{new: true, runValidators: true})
-		.then((user) => res.json(user))
+        req.requestedUser = _.merge(req.requestedUser, req.body);
+        req.requestedUser.save()
+		.then((user) => {res.json(user); console.log('user:', user)})
 		.then(null, next);
 	} else {res.sendStatus(401)}
 });
