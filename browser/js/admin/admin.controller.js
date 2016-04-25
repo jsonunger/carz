@@ -11,5 +11,4 @@ app.controller('AdminCtrl', ($scope, users, cars) => {
 			{ label: 'year', value: car.year }
 		]
 	});
-	console.log(cars);
 })

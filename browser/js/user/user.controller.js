@@ -2,6 +2,16 @@
 
 app.controller('UserCtrl', function($scope, UserFactory, user) {
 	$scope.user = user;
+    //$scope.hideBilling = false;
+
+    $scope.toggleBilling = function() {
+        console.log($scope.checked);
+        if($scope.checked){
+            $scope.hideBilling = true;
+        } else {
+            $scope.hideBilling = false;
+        }
+    }
 
     $scope.shipping = [
         {label: 'street', value: user.shipping ? user.shipping.street : '' },
@@ -22,9 +32,6 @@ app.controller('UserCtrl', function($scope, UserFactory, user) {
         { label: 'phone', value: user.phone }
     ];
 
-    console.log(user);
-
-
     $scope.save = () => {
         let updateInfo = {};
         console.log('newUs', $scope.newUserObj);
@@ -34,6 +41,7 @@ app.controller('UserCtrl', function($scope, UserFactory, user) {
         $scope.newUserObj.forEach((prop) => updateInfo[prop.label.split(' ')[0]] = prop.value );
         updateInfo.shipping = {};
         updateInfo.billing = {};
+        if($scope.checked) $scope.billing = $scope.shipping;
         $scope.shipping.forEach((prop) => updateInfo.shipping[prop.label] = prop.value );
         $scope.billing.forEach((prop) => updateInfo.billing[prop.label] = prop.value);
         UserFactory.updateUser(user._id, updateInfo)
