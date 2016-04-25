@@ -5,12 +5,11 @@ app.directive('product', () => {
 		restrict: 'E',
 		templateUrl: '/js/admin/product.html',
 		scope:{
-			productObj: '=',
+			car: '=',
 		},
 		link: (scope, element) => {
-            console.log(scope.productObj);
             scope.save = () => {
-                console.log(scope.productObj);
+                console.log(scope.car);
             }
         }
 	};
