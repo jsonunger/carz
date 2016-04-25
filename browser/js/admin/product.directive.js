@@ -8,6 +8,7 @@ app.directive('product', () => {
 			productObj: '=',
 		},
 		link: (scope, element) => {
+            console.log(scope.productObj);
             scope.save = () => {
                 console.log(scope.productObj);
             }
