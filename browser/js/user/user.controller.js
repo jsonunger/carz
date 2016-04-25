@@ -34,9 +34,7 @@ app.controller('UserCtrl', function($scope, UserFactory, user) {
         $scope.newUserObj.forEach((prop) => updateInfo[prop.label.split(' ')[0]] = prop.value );
         updateInfo.shipping = {};
         updateInfo.billing = {};
-        $scope.shipping.forEach((prop) => {
-            updateInfo.shipping[prop.label] = prop.value
-        });
+        $scope.shipping.forEach((prop) => updateInfo.shipping[prop.label] = prop.value );
         $scope.billing.forEach((prop) => updateInfo.billing[prop.label] = prop.value);
         UserFactory.updateUser(user._id, updateInfo)
         console.log(updateInfo);
