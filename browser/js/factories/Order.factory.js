@@ -5,7 +5,7 @@ app.factory('OrderFactory', function($http){
 
 	//http://localhost:1337/api/users/5719795771a36ba959db387f/orders
 
-	OrderFactory.getCart = function(id){
+	OrderFactory.getAllCarts = function(id){
 		return $http.get('/api/users/' + id + '/orders')
 		.then(parseData);
 	};
