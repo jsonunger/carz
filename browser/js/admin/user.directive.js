@@ -16,17 +16,44 @@ app.directive('user', (OrderFactory, $log)=> {
 				OrderFactory.getCart(id)
 				.then((order) => {
 					scope.cart = order.map((cart) => {
+
+						var shippingAddress = [];
+						var billingAddress = [];
+
+						Object.keys(cart.shipping).forEach((key) => {
+							if(key !== '_id'){
+								shippingAddress.push(cart.shipping[key]);
+							}
+						})
+
+						Object.keys(cart.billing).forEach((key) => {
+							if(key !== '_id'){
+								billingAddress.push(cart.billing[key]);
+							}
+						})
+
+						var cars = cart.cars.map((car) => {
+
+							return car.model + ' ' + car.make;
+						}).join(', ');
+
+			
+
 						return [
-    						{label: "cars", value: cart.cars},
-    						{label: "shipping address", value: cart.shipping},
-    						{label: "billing address", value: cart.billing},
-    						{label: "complete", value: cart.completed},
-    						{label: "price", value: cart.price}
+    						{label: "cars", value: cars, disable: true},
+    						{label: "shipping address", value: shippingAddress.join(', '), disable: false},
+    						{label: "billing address", value: billingAddress.join(', '), disable: false},
+    						{label: "complete", value: cart.completed, disable: false},
+    						{label: "price", value: cart.price, disable: true}
     					];
     				});
+
+
 				})
                 .catch($log.error);
 			}
+
+			scope.updateUser = (obj) => console.log(obj)
 		}
 	}
 })

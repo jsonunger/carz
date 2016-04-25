@@ -5,10 +5,14 @@ app.directive('master', () => {
 		restrict: 'E',
 		templateUrl: '/js/admin/master.html',
 		scope:{
-			masterObj: '='
+			masterObj: '=',
+			onSave: '&'
 		},
 		link: (scope, element) => {
-
+			scope.save = () => {
+				console.log(scope.masterObj)
+				scope.onSave(scope.masterObj);
+			};
 		}
-	}
-})
+	};
+});
