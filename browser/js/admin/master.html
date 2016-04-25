@@ -1,6 +1,8 @@
 
 <div>
-	<ul  class="thumbnail" ng-repeat="obj in masterObj" >
-		<li ng-repeat="prop in obj"><h5>{{ prop }}</h5></li>
+	<ul  class="thumbnail" ng-repeat="obj in masterObj">
+		<button class="btn btn-success">SAVE</button>
+		<button class="btn btn-danger">DELETE</button>
+		<div  ng-repeat="prop in obj" class="row"><div class="col-xs-3" style="text-align: right">{{ prop.label }} :</div><input ng-model="prop.value" class="col-xs-9"></div>
 	</ul>
 </div>
