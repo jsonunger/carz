@@ -16,7 +16,6 @@ app.config(($stateProvider) => {
 	.state('user.previousOrders', {
 		url: '/prev',
 		templateUrl: '/js/user/user.prev.html',
-		// controller: 'UserCtrl',
 		resolve: {
 			orders: (UserFactory, $stateParams) => {
 				return UserFactory.getOrder()
