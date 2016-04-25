@@ -1,4 +1,4 @@
-app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal){
+app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $rootScope, order){
 
 	$scope.addAddress = function(){
 		var modalInstance = $uibModal.open({
@@ -17,8 +17,21 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal){
 		});
 	};
 
-
+	$scope.test = () => console.log($scope.sameAddress);
+	
 	$scope.confirm = function(){
-		$state.go('order-confirm');
+		$state.go('order-confirm', {orderId: $scope.order._id});
 	};
+
+	$scope.remove = function(carId){
+		OrderFactory.removeFromOrder(carId)
+		.then(updatedOrder => $scope.order = updatedOrder);
+	};
+
+	$scope.order = order;
+	$scope.shippingCost = $scope.order.cars.length * 125;
+	$scope.tax = $scope.order.price * 0.075;
+	$scope.total = $scope.order.price + $scope.shippingCost + $scope.tax;
+
+	console.log(order);
 });
