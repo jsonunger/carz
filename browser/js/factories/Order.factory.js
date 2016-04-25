@@ -10,7 +10,6 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 
 	OrderFactory.addToOrder = function(carId){
 		var order = $rootScope.order;
-		console.log(order.cars.indexOf(carId) !== -1);
 		if(order.cars.indexOf(carId) !== -1) return;
 		order.cars.push(carId);
 
