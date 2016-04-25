@@ -2,7 +2,14 @@
 
 app.controller('UserCtrl', function($scope, UserFactory, user) {
 	$scope.user = user;
-    //$scope.hideBilling = false;
+
+    console.log(user.shipping)
+    if(user.shipping) {
+        if(user.shipping.street === user.billing.street) {
+            $scope.checked = true;
+            $scope.hideBilling = true;
+        }
+    }
 
     $scope.toggleBilling = function() {
         console.log($scope.checked);
