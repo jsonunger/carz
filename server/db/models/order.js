@@ -25,22 +25,38 @@ var schema = new mongoose.Schema({
     billing: require('./address.js')
 });
 
+schema.statics.findOrCreate = function(user){
+    var self = this;
+    return self.findOne({user: user, completed: false})
+    .then(function(order){
+        if(!order) return self.create({user: user});
+        return order;
+    })
+    .then(null, console.error.bind(console));
+};
+
 schema.methods.populateCars = function () {
     return Car.find({_id: {$in: this.cars}});
 };
 
-schema.methods.setPrice = function () {
+schema.methods.getPrice = function () {
     let self = this;
     return self.populateCars()
     .then(function (cars) {
         return cars.reduce((total,car) => total += car.price,0);
     })
-    .then(function (price) {
-        self.price = price;
-        return self.save();
-    })
     .then(null, console.error.bind(console));
 };
+
+schema.pre('save', function (next) {
+    let self = this;
+    this.getPrice()
+    .then(function (price) {
+        self.price = price;
+        next();
+    })
+    .then(null, next);
+});
 
 /*
 This post-save hook functions as inventory control when a car is no longer in stock.
@@ -78,7 +94,7 @@ schema.post('save', function (doc, next) {
     .then(function () {
         next();
     })
-    .then(null,console.error.bind(console));
+    .then(null,next);
 });
 
 schema.virtual('quantity').get(function () { return this.cars.length; });
