@@ -8,7 +8,7 @@ app.directive('master', () => {
 			masterObj: '='
 		},
 		link: (scope, element) => {
-			console.log("HELLO", scope.masterObj);
+
 		}
 	}
 })

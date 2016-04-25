@@ -17,11 +17,19 @@
                 <label for="formGroupExampleInput">{{ prop.label }} :</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
               </fieldset>
-              <h4>Billing Address:</h4>
-              <fieldset class="form-group" ng-repeat="prop in billing">
-                <label for="formGroupExampleInput">{{ prop.label }} :</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
-              </fieldset>
+              <div class="radio">
+                  <label>
+                  <input type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" ng-click="toggleBilling()" ng-model="checked">
+                   Select if Billing and Shipping Address are same
+                  </label>
+              </div>
+              <div ng-hide="hideBilling">
+                  <h4>Billing Address:</h4>
+                  <fieldset class="form-group" ng-repeat="prop in billing">
+                    <label for="formGroupExampleInput">{{ prop.label }} :</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
+                  </fieldset>
+              </div>
 			</form>
 		</div>
 		<button type="button" class="btn btn-success" ng-click="save()">SAVE</button>
