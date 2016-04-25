@@ -10,8 +10,16 @@ app.directive('user', (OrderFactory)=> {
 		link: (scope, element) => {
 			scope.getOrders = (id) => {
 				OrderFactory.getCart(id)
-				.then((cart) => {
-					scope.cart = cart
+				.then((order) => {
+					scope.cart = order.map((cart) => {
+						return [
+						{label: "cars", value: cart.cars},
+						{label: "shipping address", value: cart.shipping},
+						{label: "billing address", value: cart.billing},
+						{label: "complete", value: cart.completed},
+						{label: "price", value: cart.price}
+					]
+				});
 				});
 			}
 		}
