@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <fullstack-logo></fullstack-logo> 
+            <fullstack-logo></fullstack-logo>
         </div>
         <div class="visible-xs collapse" uib-collapse="!navCollapse">
             <div ng-if="navCollapse">
@@ -32,7 +32,7 @@
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>
                 <li ng-show="user.isAdmin">
-                    <a ui-sref-active="active">{{ admin.label }}</a>
+                    <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
                 </li>
             </ul>
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
