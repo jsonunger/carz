@@ -21,8 +21,8 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    shipping: mongoose.model('Address').schema,
-    billing: mongoose.model('Address').schema
+    shipping: require('./address.js'),
+    billing: require('./address.js')
 });
 
 schema.methods.populateCars = function () {
@@ -49,7 +49,7 @@ of the orders.
 */
 schema.post('save', function (doc, next) {
     if (!doc.completed) return next();
-    
+
     var updates = doc.cars.map(function (car) {
         car.quantity--; // Reduces the quantity of all of the cars in the purchase by 1
         return car.save();
