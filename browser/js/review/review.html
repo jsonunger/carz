@@ -1,21 +1,15 @@
-<div class="row">
-   <div class="col-xs-6">
-      <div class="stars">
+<div class="row buffer">
+      <span class="stars">
          <div class="stars-filled left">
             <span ng-repeat="i in rating(review.stars) track by $index">★</span>
          </div>
-         <div class="stars-back left">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-         </div>
-      </div>
-   </div>
-   <div class="col-xs-6 about">
+      </span>
       <span class="right about" ng-show="type === 'car'">By <span style="font-weight: bold">{{review.user.email}}</span></span>
       <car-info class="right" ng-show="type === 'user'" car="review.car"></car-info>
-   </div>
 </div>
 <div class="row">
    <div class="col-xs-12">
       {{review.content}}
    </div>
 </div>
+<hr ng-if="!$parent.$last"/>
