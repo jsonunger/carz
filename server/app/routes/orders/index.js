@@ -14,9 +14,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-		Order.create(req.body)
-		.then((order) => res.status(201).json(order))
-		.then(null, next);
+	Order.findOrCreate(req.body.user)
+	.then(function(order){
+		console.log("The order", order);
+		res.status(200).json(order);
+	}) 
+	.then(null, next);
 });
 
 router.param('orderId', (req, res, next, orderId) => {

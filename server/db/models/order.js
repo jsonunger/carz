@@ -25,6 +25,16 @@ var schema = new mongoose.Schema({
     billing: mongoose.model('Address').schema
 });
 
+schema.statics.findOrCreate = function(user){
+    var self = this;
+    return self.findOne({user: user, completed: false})
+    .then(function(order){
+        if(!order) return self.create({user: user});
+        return order;
+    })
+    .then(null, console.error.bind(console));
+};
+
 schema.methods.populateCars = function () {
     return Car.find({_id: {$in: this.cars}});
 };
