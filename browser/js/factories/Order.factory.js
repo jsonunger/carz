@@ -23,21 +23,23 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		.then(parseData);
 	};
 
+	OrderFactory.getAllCarts = function(id){
+		return $http.get('/api/users/' + id + '/orders')
+		.then(parseData);
+	};
+
 	OrderFactory.removeFromOrder = function(carId){
 		var order = $rootScope.order;
 		var index = order.cars.indexOf(carId);
 
-
 		if(index === -1) return;
 		order.cars.splice(index, 1);
 
-		console.log(order);
-
 		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
 		.then(parseData)
-		.then(order => {
-			$rootScope.order = order;
-			return OrderFactory.getOrder(order._id);
+		.then(updatedOrder => {
+			$rootScope.order = updatedOrder;
+			return OrderFactory.getOrder(updatedOrder._id);
 		});
 	};	
 
