@@ -31,8 +31,8 @@ var schema = new mongoose.Schema({
             return /^\d{10}$/.test(v);
         }
     },
-    shipping: mongoose.model('Address').schema,
-    billing: mongoose.model('Address').schema
+    shipping: require('./address.js'),
+    billing: require('./address.js')
 });
 
 // method to remove sensitive information from user objects before sending them out

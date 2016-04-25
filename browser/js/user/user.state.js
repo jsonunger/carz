@@ -6,15 +6,16 @@ app.config(($stateProvider) => {
 		templateUrl: '/js/user/user.html',
 		controller: 'UserCtrl',
 		resolve: {
-			user: (UserFactory, AuthService) => {
-				return AuthService.getLoggedInUser();
+			user: (UserFactory, AuthService, $http) => {
+				return AuthService.getLoggedInUser()
+				.then(user =>  $http.get('/api/users/' + user._id))
+				.then( user => user.data);
 			}
 		}
 	})
 	.state('user.previousOrders', {
 		url: '/prev',
 		templateUrl: '/js/user/user.prev.html',
-		// controller: 'UserCtrl',
 		resolve: {
 			orders: (UserFactory, $stateParams) => {
 				return UserFactory.getOrder()
