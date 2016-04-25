@@ -8,9 +8,7 @@ app.config(($stateProvider) => {
 		resolve: {
 			user: (UserFactory, AuthService, $http) => {
 				return AuthService.getLoggedInUser()
-				.then(user => {
-					return $http.get('/api/users/' + user._id);
-				})
+				.then(user =>  $http.get('/api/users/' + user._id))
 				.then( user => user.data);
 			}
 		}
