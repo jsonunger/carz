@@ -9,17 +9,17 @@
 			<form class="col-xs-12">
              <h4>User Infos:</h4>
 			  <fieldset class="form-group" ng-repeat="prop in newUserObj">
-			    <label for="formGroupExampleInput">{{ prop.label }}</label>
+			    <label for="formGroupExampleInput">{{ prop.label }} :</label>
 			    <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
 			  </fieldset>
                <h4>Shipping Address:</h4>
               <fieldset class="form-group" ng-repeat="prop in shipping">
-                <label for="formGroupExampleInput">{{ prop.label }}</label>
+                <label for="formGroupExampleInput">{{ prop.label }} :</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
               </fieldset>
               <h4>Billing Address:</h4>
               <fieldset class="form-group" ng-repeat="prop in billing">
-                <label for="formGroupExampleInput">{{ prop.label }}</label>
+                <label for="formGroupExampleInput">{{ prop.label }} :</label>
                 <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
               </fieldset>
 			</form>
