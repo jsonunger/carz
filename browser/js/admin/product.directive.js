@@ -3,7 +3,7 @@
 app.directive('product', (CarFactory) => {
 	return {
 		restrict: 'E',
-		templateUrl: '/js/admin/product.html',
+		templateUrl: '/js/admin/product.directive.html',
 		scope:{
 			car: '=',
 		},

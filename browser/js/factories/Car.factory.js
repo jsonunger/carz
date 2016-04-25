@@ -22,9 +22,8 @@ app.factory('CarFactory', function ($http) {
       .then(parseData);
    }
 
-   CarFactory.addCar = function(id, body){
-      return $http.post('/api/cars/', body)
-      .then(parseData);
+   CarFactory.addCar = function(body){
+      return $http.post('/api/cars/', body);
    }
 
    return CarFactory;
