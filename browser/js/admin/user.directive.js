@@ -25,20 +25,16 @@ app.directive('user', (OrderFactory, $log)=> {
 								shippingAddress.push(cart.shipping[key]);
 							}
 						})
-
+						
 						Object.keys(cart.billing).forEach((key) => {
 							if(key !== '_id'){
 								billingAddress.push(cart.billing[key]);
 							}
 						})
-
 						var cars = cart.cars.map((car) => {
 
 							return car.model + ' ' + car.make;
 						}).join(', ');
-
-			
-
 						return [
     						{label: "cars", value: cars, disable: true},
     						{label: "shipping address", value: shippingAddress.join(', '), disable: false},
@@ -47,13 +43,9 @@ app.directive('user', (OrderFactory, $log)=> {
     						{label: "price", value: cart.price, disable: true}
     					];
     				});
-
-
 				})
                 .catch($log.error);
 			}
-
-			scope.updateUser = (obj) => console.log(obj)
 		}
 	}
 })

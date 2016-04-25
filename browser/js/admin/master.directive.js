@@ -10,7 +10,6 @@ app.directive('master', () => {
 		},
 		link: (scope, element) => {
 			scope.save = () => {
-				console.log(scope.masterObj)
 				scope.onSave(scope.masterObj);
 			};
 		}
