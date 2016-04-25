@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
 	Order.findOrCreate(req.body.user)
 	.then(function(order){
-		console.log("The order", order);
 		res.status(200).json(order);
 	}) 
 	.then(null, next);
