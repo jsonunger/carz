@@ -1,28 +1,45 @@
-app.factory('OrderFactory', function($http){
+app.factory('OrderFactory', function($http, AuthService, $rootScope){
 	var OrderFactory = {};
 	var parseData = res => res.data;
-	var orderUrl = '/api/users/:userId/orders';
 
-	//http://localhost:1337/api/users/5719795771a36ba959db387f/orders
-
-	OrderFactory.getCart = function(){
-		return $http.get(orderUrl)
-		.then(function(cart){
-			console.log("this is info", cart);
-		});
+	OrderFactory.findOrCreateCart = function(){
+		return AuthService.getLoggedInUser()
+		.then(user => $http.post('/api/users/' + user._id + '/orders', {user: user._id}))
+		.then(parseData);
 	};
 
-	// OrderFactory.newCart = function(){
-	// 	return $http.post(orderUrl, {
-	// 	}).then(parseData);
-	// };
+	OrderFactory.addToOrder = function(carId){
+		var order = $rootScope.order;
+		if(order.cars.indexOf(carId) !== -1) return;
+		order.cars.push(carId);
+
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		.then(parseData);
+	};
+
+	OrderFactory.getOrder = function (orderId) {
+		return AuthService.getLoggedInUser()
+		.then(user => $http.get('/api/users/' + user._id + '/orders/' + orderId))
+		.then(parseData);
+	};
+
+	OrderFactory.removeFromOrder = function(carId){
+		var order = $rootScope.order;
+		var index = order.cars.indexOf(carId);
 
 
-	// CarFactory.getCars = function (query) {
- //      return $http.get('/api/cars',{
- //         params: query
- //      }).then(parseData);
- //   };
+		if(index === -1) return;
+		order.cars.splice(index, 1);
+
+		console.log(order);
+
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		.then(parseData)
+		.then(order => {
+			$rootScope.order = order;
+			return OrderFactory.getOrder(order._id);
+		});
+	};	
 
 	return OrderFactory;
 });

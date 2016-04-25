@@ -41,25 +41,30 @@ var seedUsers = function () {
 
     var users = [
     {
+        name: 'Zeke Zeke',
         email: 'zeke@zeke.zeke',
         password: 'password'
     },
     {
+        name: 'Nav Jo',
         email: 'nsingh3104@gmail.com',
         password: 'incorrect',
         isAdmin: true
     },
     {
+        name: 'I Money',
         email: 'i.mohamed037@gmail.com',
         password: 'qwerty',
         isAdmin: true
     },
     {
+        name: 'Mass Crap',
         email: 'massimo.crapanzano@gmail.com',
         password: 'fart',
         isAdmin: true
     },
     {
+        name: 'Json Junger',
         email: 'jasonscottunger@gmail.com',
         password: 'carz',
         isAdmin: true
@@ -299,7 +304,7 @@ var seedCars = function () {
     },
     {
         model: 'Range Rover Sport',
-        price: 900000,
+        price: 90000,
         make: 'Land Rover',
         year: 2016,
         type: 'SUV',
@@ -316,20 +321,6 @@ var seedCars = function () {
     ];
     return Car.create(cars);
 };
-
-// var seedCars = function () {
-//     var options = {
-//         uri: 'https://api.edmunds.com/api/vehicle/v2/makes?state=new&year=2016&view=basic&fmt=json&category=minivan&api_key=97praxc3zbju6cvk7e5xy4n2',
-//         json: true
-//     };
-//     return rp(options)
-//     .then((cars) => {
-//         console.log(cars);
-//     })
-//     .catch(function (err) {
-//         console.error('ERROR: ', err);
-//     });
-// };
 
 var seedReviews = function () {
     var carIds = [];
@@ -364,12 +355,15 @@ var seedOrders = function () {
         cars: [],
         price: 0,
         shipping: {
+
+            name: 'Json Junger',
             street: '5 Hanover Square, Fl. 25',
             city: 'New York',
             state: 'NY',
             zip: '10004'
         },
         billing: {
+            name: 'Json Junger',
             street: '5 Hanover Square, Fl. 25',
             city: 'New York',
             state: 'NY',
@@ -380,12 +374,14 @@ var seedOrders = function () {
         cars: [],
         price: 0,
         shipping: {
+            name: 'Sam Narisi',
             street: '6 Empire State Avenue',
             city: 'New York',
             state: 'NY',
             zip: '10203'
         },
         billing: {
+            name: 'I Money',
             street: '200 Neverland Ranch',
             city: 'Neverland',
             state: 'CO',
