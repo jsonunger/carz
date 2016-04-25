@@ -8,10 +8,6 @@ app.directive('master', () => {
 			masterObj: '=',
 			onSave: '&'
 		},
-		link: (scope, element) => {
-			scope.save = () => {
-				scope.onSave(scope.masterObj);
-			};
-		}
+		link: (scope, element) => scope.save = () => scope.onSave(scope.masterObj)
 	};
 });
