@@ -1,11 +1,14 @@
 <div class="col-xs-4">
-   <a class="thumbnail" ui-sref="car({carId: car._id})">
-      <img class="img-thumbnail" ng-src="{{ car.photo }}">
-      <div class="caption">
-         <h5>{{ car.year }} {{car.make}} {{car.model}} <span style="float: right">{{car.price | currency:$:0}}</span></h5>
-      </div>
+   <div class="thumbnail">
+      <a  ui-sref="car({carId: car._id})">
+         <img class="img-thumbnail" ng-src="{{ car.photo }}">
+         <div class="caption">
+            <h5>{{ car.year }} {{car.make}} {{car.model}} <span style="float: right">{{car.price | currency:$:0}}</span></h5>
+         </div>
+         
+      </a>
       <div class="buy">
-         <button class="btn btn-primary">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></button>
+         <button class="btn btn-primary" ng-if="!adminPage" ng-click="addToOrder(car._id)">Add to Cart <span class="glyphicon glyphicon-shopping-cart"></span></button>
       </div>
-   </a>
+   </div>
 </div>
