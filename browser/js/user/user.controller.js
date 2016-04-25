@@ -33,6 +33,7 @@ app.controller('UserCtrl', function($scope, UserFactory, user) {
     ]
 
 	$scope.newUserObj = [
+        {label: 'name', value: user.name },
         { label: 'email', value: user.email },
         { label: 'phone', value: user.phone }
     ];
