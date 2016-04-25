@@ -8,5 +8,10 @@ app.factory('CarFactory', function ($http) {
       }).then(parseData);
    };
 
+   CarFactory.getCar = function(id) {
+        return $http.get('/api/cars/' + id)
+        .then(parseData);
+   };
+
    return CarFactory;
 });
