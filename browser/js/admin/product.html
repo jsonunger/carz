@@ -2,7 +2,7 @@
 <div>
 	<ul  class="thumbnail">
 		<button class="btn btn-success" ng-click="save()">SAVE</button>
-		<button class="btn btn-danger">DELETE</button>
+		<button class="btn btn-danger" ng-click="delete()">DELETE</button>
 		<div  ng-repeat="prop in car" class="row"><div class="col-xs-3" style="text-align: right">{{ prop.label }} :</div><input ng-model="prop.value" class="col-xs-9" ng-disabled="prop.disable"></div>
 	</ul>
 </div>

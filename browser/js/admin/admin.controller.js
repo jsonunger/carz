@@ -8,7 +8,8 @@ app.controller('AdminCtrl', ($scope, users, cars) => {
 			{ label: 'price', value: car.price },
 			{ label: 'quantity', value: car.quantity },
 			{ label: 'type', value: car.type },
-			{ label: 'year', value: car.year }
+			{ label: 'year', value: car.year },
+            {label: 'id', value: car._id}
 		]
 	});
 })

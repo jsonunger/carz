@@ -13,5 +13,19 @@ app.factory('CarFactory', function ($http) {
         .then(parseData);
    };
 
+   CarFactory.deleteCar = function(id) {
+      return $http.delete('/api/cars/' + id);
+   }
+
+   CarFactory.updateCar = function(id, body) {
+      return $http.put('/api/cars/' + id, body)
+      .then(parseData);
+   }
+
+   CarFactory.addCar = function(id, body){
+      return $http.post('/api/cars/', body)
+      .then(parseData);
+   }
+
    return CarFactory;
 });
