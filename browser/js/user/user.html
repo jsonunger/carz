@@ -8,12 +8,12 @@
 			</div>
 			<form class="col-xs-12">
 			  <fieldset class="form-group" ng-repeat="prop in newUserObj">
-			    <label for="formGroupExampleInput">{{ prop[0] }}</label>
-			    <input type="text" class="form-control" id="formGroupExampleInput"   
-			    ng-model="prop[1]">
+			    <label for="formGroupExampleInput">{{ prop.label }}</label>
+			    <input type="text" class="form-control" id="formGroupExampleInput"
+			    ng-model="prop.value">
 			  </fieldset>
 			</form>
 		</div>
 		<button type="button" class="btn btn-success" ng-click="save()">SAVE</button>
-	</div>	
+	</div>
 </section>

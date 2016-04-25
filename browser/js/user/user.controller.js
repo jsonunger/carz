@@ -2,12 +2,14 @@
 
 app.controller('UserCtrl', function($scope, UserFactory, user) {
 	$scope.user = user;
-	$scope.newUserObj = {
-		email: ['email', user.email],
-		phone: ['phone', user.phone],
-		shipping: ['shipping address', user.shipping],
-		billing: ['billing address', user.billing]
-	}
+    console.log('user', user);
+	$scope.newUserObj = [
+        { label: 'email', value: user.email },
+        { label: 'phone', value: user.phone },
+        { label: 'shipping address', value: user.shipping},
+        { label: 'billing address', value: user.billing }
+    ];
+
 	$scope.save = () => {
 		UserFactory.updateUser(user._id, {
 			email: $scope.newUserObj.email[1],
