@@ -1,4 +1,4 @@
-app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $rootScope, order, ModalFactory, user){
+app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $rootScope, order, ModalFactory, user, $http, $log){
 
 	$scope.updateAddress = function(type){
 		var modalInstance = ModalFactory.createModal('/js/orders/addAddress.template.html', $scope, type);
@@ -46,4 +46,31 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 			$state.go('order-complete');
 		});
 	};
+	$scope.createPayment = () => {
+		Stripe.card.createToken($scope.card, (status, res) => {
+			let body = {
+				amount: $scope.total,
+				currency: 'usd',
+				source: res.id,
+				description: 'charge for carz.tech'
+			};
+			$http.post('/api/stripe', body)
+			.catch($log.error);
+		});
+	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
