@@ -19,6 +19,10 @@ body {
   margin: 0 auto;
 }
 
+.smaller-thumbnail{
+	display: inline-block;
+	width: (100% / 5);
+}
 .thankyou{
 	width: 100%;
 }

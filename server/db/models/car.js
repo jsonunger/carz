@@ -19,7 +19,7 @@ var schema = new mongoose.Schema({
        default: 5
     },
     photo: {
-        type: String,
+        type: [String],
         default: 'http://fillmurray.com/200/200'
     },
     make: {
