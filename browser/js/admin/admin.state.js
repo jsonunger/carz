@@ -10,9 +10,7 @@ app.config($stateProvider => {
 				return $http.get('/api/users')
 				.then(res => res.data);
 			},
-			cars: (CarFactory, $http) => {
-				return CarFactory.getCars();
-			}
+			cars: (CarFactory, $http) => CarFactory.getCars()
 		}
 	})
 	.state('admin.user', {
@@ -28,15 +26,23 @@ app.config($stateProvider => {
         templateUrl: '/js/admin/addCar.html',
         controller: function($scope,CarFactory) {
             $scope.save = () => {
-                var carToAdd = {}
-                $scope.newCar.forEach((prop)=> {
-                    carToAdd[prop.label] = prop.value;
-                })
+                var carToAdd = {};
+                $scope.newCar.forEach((prop)=> carToAdd[prop.label] = prop.value);
                 CarFactory.addCar(carToAdd)
-                .then(() => {
-                    alert('You added a car');
-                })
+                .then(() => alert('You added a car'));
             }
         }
-    });
+    })
+    .state('admin.user.orders', {
+    	url: '/order',
+    	templateUrl: '/js/admin/admin.order.html'
+    })
+    .state('admin.user.reviews', {
+    	url: '/order',
+    	templateUrl: '/js/admin/admin.reviews.html'
+    })
+    .state('admin.user.userInfo', {
+    	url: '/order',
+    	templateUrl: '/js/admin/admin.userInfo.html'
+    })
 });
