@@ -5,6 +5,6 @@
 <button class="btn btn-info" ng-click='getUserInfos()'>userInfo</button>
 
 <div ng-repeat="order in orders" ng-show="orderActive">
-    {{ order.label }}<input ng-model="order.value">
+    {{ order.label }}: <input ng-model="order.value">
 </div>
 
