@@ -15,11 +15,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	if (req.user && req.user.isAdmin) {
-		User.create(req.body)
-		.then((user) => res.status(201).json(user))
-		.then(null, next);
-	} else res.sendStatus(401);
+	User.create(req.body)
+	.then((user) => res.status(201).json(user))
+	.then(null, next);
 });
 
 router.param('id', function(req, res, next, id){
