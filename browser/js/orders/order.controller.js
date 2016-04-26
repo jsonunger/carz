@@ -43,6 +43,7 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 		})
 		.then(function(complete){
 			$rootScope.order = null;
+			$state.go('order-complete');
 		});
 	};
 });

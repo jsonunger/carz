@@ -17,7 +17,6 @@ app.controller('CarCtrl', function($scope, CarFactory, currentCar, user, reviews
       	return OrderFactory.addToOrder($scope.car._id, order);
       })
     	.then(function(updatedOrder){
-        console.log("the updated order", updatedOrder);
     		$rootScope.order = updatedOrder;
     		$state.go('order-cart', {orderId: updatedOrder._id});
     	});
