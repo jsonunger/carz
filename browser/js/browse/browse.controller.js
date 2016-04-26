@@ -1,4 +1,4 @@
-app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFactory) {
+app.controller('BrowseCtrl', function ($scope, cars, makes, years, types, CarFactory, OrderFactory, $rootScope, $state) {
    $scope.cars = cars;
    $scope.makes = makes;
    $scope.years = years;
