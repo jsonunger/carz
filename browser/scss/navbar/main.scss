@@ -1,10 +1,19 @@
 .collapse-toggle {
-   background-color: #D00018;
+   background-color: #c80a0c;
    span {
       background-color: white;
    }
 }
 
-.cart {
-   float: right;
+.order {
+   background-color: #c80a0c;
+   color: white;
+   margin-left: 15px;
+   &:focus {
+      outline: none;
+      color: white;
+   }
+   &:hover {
+      color: white;
+   }
 }

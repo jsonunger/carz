@@ -1,9 +1,11 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, OrderFactory) {
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/navbar/navbar.html',
         link: function (scope) {
+            OrderFactory.getCurrentOrder()
+            .then(order => scope.order = order);
 
             scope.items = [
                 { label: 'Home', state: 'home' },
@@ -16,6 +18,10 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             scope.user = null;
 
             scope.navCollapse = false;
+
+            scope.goToOrder = function () {
+                $state.go('order-cart');
+            };
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
@@ -42,8 +48,9 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
             $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
             $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
             $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
-
-            console.log($rootScope);
+            $rootScope.$on('updateOrder', function (e, order) {
+                scope.order = order;
+            });
         }
     };
 });

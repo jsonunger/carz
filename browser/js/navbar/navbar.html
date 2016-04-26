@@ -12,14 +12,14 @@
         <div class="visible-xs collapse" uib-collapse="!navCollapse">
             <div ng-if="navCollapse">
                 <ul class="nav navbar-nav">
-                    <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <li ng-repeat="item in items" ng-if="!item.auth || isLoggedIn()">
                         <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                     </li>
-                    <li ng-show="user.isAdmin">
+                    <li ng-if="user.isAdmin">
                         <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
                     </li>
                     <li>
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <button class="btn order" ng-click="goToOrder()"><span class="glyphicon glyphicon-shopping-cart"></span> <span ng-if="order.cars.length">{{order.cars.length}} {{order.cars.length > 1 ? 'items' : 'item'}} in your cart</span></button>
                     </li>
                 </ul>
                 <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
@@ -31,14 +31,14 @@
         </div>
         <div class="hidden-xs">
             <ul class="nav navbar-nav">
-                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                <li ng-repeat="item in items" ng-if="!item.auth || isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>
-                <li ng-show="user.isAdmin">
+                <li ng-if="user.isAdmin">
                     <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
                 </li>
                 <li>
-                    <a ui-sref="order-cart({orderId: order._id})"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                    <button class="btn order" ng-click="goToOrder()"><span class="glyphicon glyphicon-shopping-cart"></span> <span ng-if="order.cars.length">{{order.cars.length}} {{order.cars.length > 1 ? 'items' : 'item'}} in your cart</span></button>
                 </li>
             </ul>
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>

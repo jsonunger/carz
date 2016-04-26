@@ -16,10 +16,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="car in order.cars">
-                        	<td><img class="img-circle" ng-src="{{car.photo}}"></td>
+                        	<td><img class="img-circle" ng-src="{{car.photo[0]}}"></td>
                             <td>{{car.year + " " + car.make + " " + car.model }}</td>
                             <td>{{car.price | currency:$:0}}</td>
-                            <td><button class="btn" ng-click="remove(car._id)"><span class="glyphicon glyphicon-remove"></span></button></td>
+                            <td><button class="btn" ng-click="remove(car)"><span class="glyphicon glyphicon-remove"></span></button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 router.get('/', (req, res, next) => {
 	if(!req.user) res.sendStatus(401);
-	else if(!req.user.isAdmin) res.sendStatus(403)
+	else if(!req.user.isAdmin) res.sendStatus(403);
 	else {
 		User.find({})
 		.then(users => res.json(users))
@@ -35,7 +35,7 @@ router.get("/:id", (req, res, next) => {
     if(!req.user) res.sendStatus(401);
 	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
 		res.json(req.requestedUser);
-	} else {res.sendStatus(401)}
+	} else res.sendStatus(401);
 });
 
 router.put('/:id', (req, res, next) => {
@@ -43,9 +43,9 @@ router.put('/:id', (req, res, next) => {
 	else if(req.user.isAdmin || req.user.equals(req.requestedUser)) {
         req.requestedUser = _.merge(req.requestedUser, req.body);
         req.requestedUser.save()
-		.then((user) => {res.json(user); console.log('user:', user)})
+		.then(user => res.json(user))
 		.then(null, next);
-	} else {res.sendStatus(401)}
+	} else res.sendStatus(401);
 });
 
 router.delete('/:id', (req, res, next) => {
@@ -54,7 +54,7 @@ router.delete('/:id', (req, res, next) => {
 		User.remove(req.requestedUser)
 		.then(() => res.sendStatus(204))
 		.then(null, next);
-	} else {res.sendStatus(401)}
+	} else res.sendStatus(401);
 });
 
 router.use('/:id/reviews', require('./reviews'));

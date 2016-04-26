@@ -48,7 +48,7 @@
         ]);
     });
 
-    app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
+    app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q, OrderFactory) {
 
         function onSuccessfulLogin(response) {
             var data = response.data;
@@ -87,8 +87,16 @@
         };
 
         this.login = function (credentials) {
+            var user;
             return $http.post('/login', credentials)
                 .then(onSuccessfulLogin)
+                .then(function (loggedUser) {
+                    user = loggedUser;
+                    return OrderFactory.getCurrentOrder();
+                })
+                .then(function () {
+                    return user;
+                })
                 .catch(function () {
                     return $q.reject({ message: 'Invalid login credentials.' });
                 });
@@ -98,6 +106,7 @@
             return $http.get('/logout').then(function () {
                 Session.destroy();
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
+                OrderFactory.getCurrentOrder();
             });
         };
 
