@@ -35,7 +35,7 @@ app.config($stateProvider => {
     })
     .state('admin.user.orders', {
     	url: '/order',
-    	templateUrl: '/js/admin/admin.user.order.html'
+    	templateUrl: '/js/admin/admin.user.orders.html'
     })
     .state('admin.user.reviews', {
     	url: '/order',
