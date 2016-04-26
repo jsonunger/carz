@@ -41,9 +41,9 @@ app.config($stateProvider => {
             orders : function($stateParams, OrderFactory) {
                 return OrderFactory.getAllCarts($stateParams.userId);
             },
-            // reviews: function($stateParams, ReviewFactory) {
-            //     return ReviewFactory.getUserReviews($stateParams.userId);
-            // },
+            reviews: function($stateParams, ReviewFactory) {
+                return ReviewFactory.getUserReviews($stateParams.userId);
+            },
             user: function($stateParams, UserFactory){
                 return UserFactory.getUser($stateParams.userId);
             }

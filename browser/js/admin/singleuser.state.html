@@ -2,9 +2,20 @@
 <h4>{{ user.email }}</h4>
 <button class="btn btn-success" ng-click='getOrders()'>orders</button>
 <button class="btn btn-danger" ng-click='getReviews()'>reviews</button>
-<button class="btn btn-info" ng-click='getUserInfos()'>userInfo</button>
+<button class="btn btn-info" ng-click='getUserInfo()'>userInfo</button>
 
 <div ng-repeat="order in orders" ng-show="orderActive">
-    {{ order.label }}: <input ng-model="order.value">
+    <div ng-repeat="prop in order">
+        {{ prop.label }}: <input ng-model="prop.value">
+    </div>
 </div>
 
+<div ng-repeat="review in reviews" ng-show="reviewsActive">
+    <div ng-repeat="prop in review">
+        {{ prop.label }}: <input ng-model="prop.value">
+    </div>
+</div>
+
+<div ng-repeat="prop in user" ng-show="userActive">
+        {{ prop.label }}: <input ng-model="prop.value">
+</div>
