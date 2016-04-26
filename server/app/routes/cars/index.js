@@ -18,8 +18,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    console.log(req.body);
-    console.log('HEYYYYYY');
 	if (req.user && req.user.isAdmin) {
 		Car.create(req.body)
 		.then(newCar => res.status(201).json(newCar))
