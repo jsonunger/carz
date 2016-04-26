@@ -1,6 +1,6 @@
 
 
-app.directive('product', (CarFactory) => {
+app.directive('product', (CarFactory, $state) => {
 	return {
 		restrict: 'E',
 		templateUrl: '/js/admin/product.directive.html',
@@ -8,6 +8,8 @@ app.directive('product', (CarFactory) => {
 			car: '=',
 		},
 		link: (scope, element) => {
+            scope.hideCurrent = false;
+
             scope.save = () => {
                 var updateCar = {};
                 scope.car.forEach((car) => {
@@ -24,7 +26,10 @@ app.directive('product', (CarFactory) => {
                         deleteCarId = car.value;
                     }
                 });
-                CarFactory.deleteCar(deleteCarId);
+                CarFactory.deleteCar(deleteCarId)
+                .then(() => {
+                    scope.hideCurrent = true;
+                })
             }
         }
 	};
