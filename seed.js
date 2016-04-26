@@ -55,7 +55,21 @@ var seedUsers = function () {
         name: 'I Money',
         email: 'i.mohamed037@gmail.com',
         password: 'qwerty',
-        isAdmin: true
+        isAdmin: true,
+        shipping: {
+            name: 'I Money',
+            street: '6 Empire State Avenue',
+            city: 'New York',
+            state: 'NY',
+            zip: '10203'
+        },
+        billing: {
+            name: 'I Money',
+            street: '200 Neverland Ranch',
+            city: 'Neverland',
+            state: 'CO',
+            zip: '23452'
+        }
     },
     {
         name: 'Mass Crap',
@@ -67,7 +81,21 @@ var seedUsers = function () {
         name: 'Json Junger',
         email: 'jasonscottunger@gmail.com',
         password: 'carz',
-        isAdmin: true
+        isAdmin: true,
+        shipping: {
+            name: 'Json Junger',
+            street: '5 Hanover Square, Fl. 25',
+            city: 'New York',
+            state: 'NY',
+            zip: '10004'
+        },
+        billing: {
+            name: 'Json Junger',
+            street: '5 Hanover Square, Fl. 25',
+            city: 'New York',
+            state: 'NY',
+            zip: '10004'
+        }
     }
     ];
 
@@ -353,40 +381,11 @@ var seedOrders = function () {
     var orders = [
     {
         cars: [],
-        price: 0,
-        shipping: {
-
-            name: 'Json Junger',
-            street: '5 Hanover Square, Fl. 25',
-            city: 'New York',
-            state: 'NY',
-            zip: '10004'
-        },
-        billing: {
-            name: 'Json Junger',
-            street: '5 Hanover Square, Fl. 25',
-            city: 'New York',
-            state: 'NY',
-            zip: '10004'
-        }
+        price: 0
     },
     {
         cars: [],
-        price: 0,
-        shipping: {
-            name: 'Sam Narisi',
-            street: '6 Empire State Avenue',
-            city: 'New York',
-            state: 'NY',
-            zip: '10203'
-        },
-        billing: {
-            name: 'I Money',
-            street: '200 Neverland Ranch',
-            city: 'Neverland',
-            state: 'CO',
-            zip: '23452'
-        }
+        price: 0
     }
     ];
 

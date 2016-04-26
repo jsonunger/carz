@@ -8,16 +8,16 @@
                 <h5>Current Address:</h5>
             </div>
             <div class="col-xs-6">
-                <address>
+                <address ng-if="order.shipping.name">
                     <strong>{{order.shipping.name}}</strong>
                     <br> {{order.shipping.street}}
                     <br> {{order.shipping.city}}, {{order.shipping.state}} {{order.shipping.zip}}
                     <br>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
                 </address>
+                <h4 ng-if="!order.shipping.name">Please enter an address</h4>
             </div>
             <div class="col-xs-3">
-                <button type="button" class="btn btn-info" ng-click="addAddress()">Change</button>
+                <button type="button" class="btn btn-info" ng-click="updateAddress('shipping')">{{order.shipping.name ? 'Change' : 'Add'}}</button>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" ng-model="sameAddress"> Same for Billing?
@@ -34,16 +34,16 @@
                 <h5>Billing Address:</h5>
             </div>
             <div class="col-xs-6">
-                <address>
+                <address ng-if="order.billing.name">
                     <strong>{{order.billing.name}}</strong>
                     <br> {{order.billing.street}}
                     <br> {{order.billing.city}}, {{order.billing.state}} {{order.billing.zip}}
                     <br>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
                 </address>
+                <h4 ng-if="!order.billing.name">Please enter an address</h4>
             </div>
             <div class="col-xs-3">
-                <button type="button" class="btn btn-info" ng-click="addAddress()">Change</button>
+                <button type="button" class="btn btn-info" ng-click="updateAddress('billing')">{{order.billing.name ? 'Change' : 'Add'}}</button>
             </div>
             </div>
         </div>
@@ -62,7 +62,6 @@
         <br>
     </div>
     <div class="col-md-3 col-sm-12 text-center">
-        <button type="button" class="btn btn-info btn-block" ng-click="addAddress()">Place Your Order</button>
         <h4>Order Summary</h4>
         <br>
         <table class="table table-hover">
@@ -93,5 +92,6 @@
         <br>
         <h4>Order Total:</h4>
         <p>{{total| currency:$:0 }}</p>
+        <button type="button" class="btn btn-info btn-block" ng-click="submitOrder()">Place Your Order</button>
     </div>
 </div>
