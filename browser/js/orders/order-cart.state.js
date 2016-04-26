@@ -1,5 +1,4 @@
 app.config(function($stateProvider){
-
 	$stateProvider.state('order-cart', {
 		url: '/order/:orderId/cart',
 		templateUrl: 'js/orders/order-cart.template.html',
@@ -7,6 +6,9 @@ app.config(function($stateProvider){
 		resolve: {
 			order: function (OrderFactory, $stateParams) {
 				return OrderFactory.getOrder($stateParams.orderId);
+			},
+			user: function (AuthService){
+				return AuthService.getLoggedInUser(); 
 			}
 		}
 	});

@@ -1,4 +1,4 @@
-app.factory('OrderFactory', function($http, AuthService, $rootScope){
+app.factory('OrderFactory', function($http){
 	var OrderFactory = {};
 	var parseData = res => res.data;
 
@@ -10,14 +10,18 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		.then(parseData);
 	};
 
+	OrderFactory.getPreviousOrders = function () {
+		return $http.get('/api/orders/previousOrders')
+		.then(parseData);
+	};
+
 	OrderFactory.addToOrder = function(car){
 		return OrderFactory.getCurrentOrder()
 		.then(function (order) {
 			if (order.cars.find(orderCar => orderCar._id === car._id)) return Promise.resolve(order);
 			order.cars.push(car);
 			return $http.put('/api/orders/order', {cars: order.cars});
-		})
-		.then(parseData);
+		});
 	};
 
 	OrderFactory.getAllOrders = function(query) {
@@ -27,13 +31,13 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		.then(parseData);
 	};
 
-	OrderFactory.removeFromOrder = function(carId){
+	OrderFactory.removeFromOrder = function(car){
 		return OrderFactory.getCurrentOrder()
 		.then(function (order) {
 			if (!order.cars.find(orderCar => orderCar._id === car._id)) return Promise.resolve(order);
 			var idx;
 			for (var i = 0; i < order.cars.length; i++) {
-				if (order.cars[i]._id === carId) {
+				if (order.cars[i]._id === car._id) {
 					idx = i;
 					break;
 				}
@@ -43,6 +47,17 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		})
 		.then(parseData);
 	};	
+
+	OrderFactory.updateOrder = function(order) {
+		delete order.cars;
+		return $http.put('/api/orders/order', order)
+		.then(parseData);
+	};
+
+	OrderFactory.submitOrder = function(order) {
+		return $http.put('/api/orders/order', order)
+		.then(parseData);
+	};
 
 	return OrderFactory;
 });

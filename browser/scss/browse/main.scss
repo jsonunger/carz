@@ -1,34 +1,33 @@
 #browse {
-   .filter {
-      margin-top: 15px;
-      ul {
-         list-style: none;
-      }
-      .filter-title {
-      font-size: 150%;
-      padding-left: 15px;
-      font-family: sans-serif;
-      margin-bottom: 15px;
-      }
-      input {
-         margin-right: 5px;
-      }
-      .selected {
-         font-weight: bold;
-      }
-   }
-}
-
-.img-thumbnail {
-   width: 100%;
+    .filter {
+        margin-top: 15px;
+        ul {
+            list-style: none;
+        }
+        .filter-title {
+            font-size: 150%;
+            padding-left: 15px;
+            font-family: sans-serif;
+            margin-bottom: 15px;
+        }
+        input {
+            margin-right: 5px;
+        }
+        .selected {
+            font-weight: bold;
+        }
+    }
+    .img-thumbnail {
+        width: 20vw;
+    }
 }
 
 .buy {
-   text-align: center;
+    text-align: center;
 }
 
 .thumbnail {
-   a:hover {
-      text-decoration: none;
-   }
+    a:hover {
+        text-decoration: none;
+    }
 }

@@ -55,7 +55,21 @@ var seedUsers = function () {
         name: 'I Money',
         email: 'i.mohamed037@gmail.com',
         password: 'qwerty',
-        isAdmin: true
+        isAdmin: true,
+        shipping: {
+            name: 'I Money',
+            street: '6 Empire State Avenue',
+            city: 'New York',
+            state: 'NY',
+            zip: '10203'
+        },
+        billing: {
+            name: 'I Money',
+            street: '200 Neverland Ranch',
+            city: 'Neverland',
+            state: 'CO',
+            zip: '23452'
+        }
     },
     {
         name: 'Mass Crap',
@@ -67,12 +81,40 @@ var seedUsers = function () {
         name: 'Json Junger',
         email: 'jasonscottunger@gmail.com',
         password: 'carz',
-        isAdmin: true
+        isAdmin: true,
+        shipping: {
+            name: 'Json Junger',
+            street: '5 Hanover Square, Fl. 25',
+            city: 'New York',
+            state: 'NY',
+            zip: '10004'
+        },
+        billing: {
+            name: 'Json Junger',
+            street: '5 Hanover Square, Fl. 25',
+            city: 'New York',
+            state: 'NY',
+            zip: '10004'
+        }
     }
     ];
 
     return User.create(users);
 
+};
+
+var carDescriptions = ['The ZyearZ ZmakeZ is a testament to contemporary design. While its stunning, sculpted exterior has earned ZmakeZ plenty of style cred, it’s more than just design for design’s sake. ZmakeZ is equipped with thoughtful features like available smart driver-assist technologies and voice-activated controls. Driving one tells the world you know where you’re going.',
+'The ZmakeZ ZmodelZ is known for award-winning design, industry-recognized safety and impressive performance. It\'s the luxury compact car that leaves a big impression. Additionally, the ZyearZ ZmakeZ ZmodelZ, when equipped with the Driver Assistance package, is a ZyearZ IIHS Top Safety Pick+',
+'A ride as bold as the people who drive them. The ZmakeZ ZmodelZ amplifies its good looks with standard 18-in. alloy wheels. 8 With their machined finish surface and gloss-black accents, these stylish wheels are impossible to ignore.',
+'The all-new ZyearZ ZmodelZ is thoughtfully designed to offer impressive safety, exceptional efficiency and seamless connectivity. It’s ready to change your perception of what an automotive vehicle can be. No wonder ZmodelZ has been named “Most Dependable Car” by J.D. Power (current award based on ZyearZ model).',
+'Featuring a dramatically redesigned exterior and packed with new technology, the all-new ZyearZ ZmodelZ is leading the charge for the next generation. See which ZmodelZ fits your life and your style.'];
+
+var addPhotos = function(year, make, model){
+    var carPhotos = [];
+    for(var i =1; i<6; i++){
+        carPhotos.push('http://zombdrive.com/images/'+year+'-'+make+'-'+model+'-'+i+'.jpg');
+    }
+    return carPhotos;
 };
 
 var seedCars = function () {
@@ -83,48 +125,42 @@ var seedCars = function () {
         price: 27000,
         make: 'Acura',
         year: 2015,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'MDX',
         price: 42500,
         make: 'Acura',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'V8 Vantage',
         price: 121000,
         make: 'Aston Martin',
         year: 2016,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'i3',
         price: 42000,
         make: 'BMW',
         year: 2015,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: '3 Series Gran Turismo',
         price: 43000,
         make: 'BMW',
         year: 2016,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Camaro',
         price: 23500,
         make: 'Chevrolet',
         year: 2015,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Corvette',
@@ -132,63 +168,56 @@ var seedCars = function () {
         make: 'Chevrolet',
         year: 2016,
         type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2015, 'chevrolet', 'corvette')
     },
     {
         model: 'Equinox',
         price: 23000,
         make: 'Chevrolet',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'Silverado 2500HD',
         price: 30000,
         make: 'Chevrolet',
         year: 2015,
-        type: 'Truck',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Truck'
     },
     {
         model: 'Expedition',
         price: 40000,
         make: 'Ford',
         year: 2015,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'F-150',
         price: 26000,
         make: 'Ford',
         year: 2016,
-        type: 'Truck',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Truck'
     },
     {
         model: 'Focus',
         price: 16000,
         make: 'Ford',
         year: 2015,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Edge',
         price: 27500,
         make: 'Ford',
         year: 2015,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Grand Cherokee',
         price: 30000,
         make: 'Jeep',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'Compass',
@@ -196,15 +225,14 @@ var seedCars = function () {
         make: 'Jeep',
         year: 2016,
         type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2015, 'jeep', 'compass')
     },
     {
         model: 'Sienna',
         price: 28500,
         make: 'Toyota',
         year: 2016,
-        type: 'Minivan',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Minivan'
     },
     {
         model: 'GLK350',
@@ -212,47 +240,43 @@ var seedCars = function () {
         make: 'Mercedes-Benz',
         year: 2015,
         type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2013, 'mercedes-benz', 'glk-class')
     },
     {
         model: 'Sprinter',
         price: 32500,
         make: 'Mercedes-Benz',
         year: 2016,
-        type: 'Van',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Van'
     },
     {
         model: 'Charger',
         price: 30000,
         make: 'Dodge',
         year: 2016,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Challenger',
         price: 35000,
         make: 'Dodge',
         year: 2016,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Ram 1500',
         price: 35000,
         make: 'Dodge',
         year: 2016,
-        type: 'Truck',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Truck'
+        //photo: addPhotos(2010, 'dodge', 'ram-pickup=1500_crew-cab-pickup_slt_fg_oem_4_2048')
     },
     {
         model: 'Durango',
         price: 19000,
         make: 'Dodge',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'Q50',
@@ -260,15 +284,14 @@ var seedCars = function () {
         make: 'Infiniti',
         year: 2016,
         type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2015, 'infiniti', 'q50')
     },
     {
         model: 'Odyssey',
         price: 29400,
         make: 'Honda',
         year: 2016,
-        type: 'Minivan',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Minivan'
     },
     {
         model: 'Q60',
@@ -276,23 +299,21 @@ var seedCars = function () {
         make: 'Infiniti',
         year: 2016,
         type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2015, 'infiniti', 'q60-coupe')
     },
     {
         model: 'Highlander',
         price: 28000,
         make: 'Toyota',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'Aventador',
         price: 200000,
         make: 'Lamborghini',
         year: 2016,
-        type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Car'
     },
     {
         model: 'Huracan',
@@ -300,26 +321,34 @@ var seedCars = function () {
         make: 'Lamborghini',
         year: 2016,
         type: 'Car',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        photo: addPhotos(2015, 'lamborghini', 'huracan')
     },
     {
         model: 'Range Rover Sport',
         price: 90000,
         make: 'Land Rover',
         year: 2016,
-        type: 'SUV',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'SUV'
     },
     {
         model: 'Quest',
         price: 25000,
         make: 'Nissan',
         year: 2016,
-        type: 'Minivan',
-        description: lorem({count: Math.ceil(Math.random()*15), units: 'words'})
+        type: 'Minivan'
     }
     ];
-    return Car.create(cars);
+
+    var carsWithDescriptionsAndPhotos = cars.map(function(elem){
+        var mapObj = {ZmakeZ: elem.make, ZmodelZ: elem.model, ZyearZ: elem.year};
+        elem.description = carDescriptions[Math.floor((Math.random() * 10) % 5)].replace(/ZmakeZ|ZmodelZ|ZyearZ/gi, function(matched){
+            return mapObj[matched];
+        });
+        if(!elem.photo)elem.photo= addPhotos(2014, elem.make.replace(/\s+/g, '-').toLowerCase(), elem.model.replace(/\s+/g, '-').toLowerCase());
+        return elem;
+    });
+
+    return Car.create(carsWithDescriptionsAndPhotos);
 };
 
 var seedReviews = function () {
@@ -353,40 +382,11 @@ var seedOrders = function () {
     var orders = [
     {
         cars: [],
-        price: 0,
-        shipping: {
-
-            name: 'Json Junger',
-            street: '5 Hanover Square, Fl. 25',
-            city: 'New York',
-            state: 'NY',
-            zip: '10004'
-        },
-        billing: {
-            name: 'Json Junger',
-            street: '5 Hanover Square, Fl. 25',
-            city: 'New York',
-            state: 'NY',
-            zip: '10004'
-        }
+        price: 0
     },
     {
         cars: [],
-        price: 0,
-        shipping: {
-            name: 'Sam Narisi',
-            street: '6 Empire State Avenue',
-            city: 'New York',
-            state: 'NY',
-            zip: '10203'
-        },
-        billing: {
-            name: 'I Money',
-            street: '200 Neverland Ranch',
-            city: 'Neverland',
-            state: 'CO',
-            zip: '23452'
-        }
+        price: 0
     }
     ];
 

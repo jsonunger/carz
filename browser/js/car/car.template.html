@@ -4,11 +4,17 @@
             <div class="col-xs-8">
                 <h1>{{ title }}</h1>
             </div>
-            <div class="col-xs-2"><h3>${{ car.price }}</h3></div>
-            <div class="col-xs-2"><button ng-click="addToCart()">ADD TO CART</button></div>
+            <div class="col-xs-2">
+                <h3>${{ car.price }}</h3></div>
+            <div class="col-xs-2">
+                <button ng-click="addToCart()">ADD TO CART</button>
+            </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <img class="img-thumbnail" ng-src="{{ mainImage }}">
+                    <img class="img-thumbnail" ng-src="{{ mainPhoto }}">
+                    <div>
+                        <a href="#"><img class="smaller-thumbnail" ng-src="{{image}}" alt="" ng-repeat="image in car.photo" ng-click="changeMainPhoto(image)"></a>
+                    </div>
                     <div class="stars" ng-if="reviews.length">
                         <div class="stars-filled left">
                             <span ng-repeat="i in rating(car.rating) track by $index">★</span> <a style="font-size: 14px" ng-click="showReviews()">({{reviews.length}})</a>
@@ -16,30 +22,31 @@
                     </div>
                     <p ng-if="!reviews.length">No reviews yet</p>
                 </div>
-                <div class="col-sm-6"><h2>Description</h2>
-                <p>{{ car.description }}</p>
-                <h2> SPECS </h2>
-                <table border='1'>
-                    <tr>
-                        <td>Lorem.</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit iure sequi totam enim, rem earum dicta saepe, officiis corporis, repellendus veniam ea quas voluptatum beatae temporibus ex ullam tempore quod! Libero, alias quaerat deserunt facere nemo veniam perferendis commodi.</td>
-                    </tr>
-                    <tr>
-                        <td>Lorem.</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo maxime at molestias, vel repellendus nulla eveniet hic. Vel voluptas deleniti dicta sit qui, suscipit quibusdam ratione officiis quo veniam expedita.</td>
-                    </tr>
-                    <tr>
-                        <td>Lorem.</td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id omnis eos voluptatibus. Itaque commodi aspernatur magni rem consequuntur, in maiores veritatis saepe numquam laudantium? Dolor fugiat laboriosam voluptas magnam, impedit labore, voluptatem at iste rem voluptate inventore itaque quaerat commodi!</td>
-                    </tr>
-                </table>
+                <div class="col-sm-6">
+                    <h2>Description</h2>
+                    <p>{{ car.description }}</p>
+                    <h2> SPECS </h2>
+                    <table border='1'>
+                        <tr>
+                            <td>Lorem.</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, sit iure sequi totam enim, rem earum dicta saepe, officiis corporis, repellendus veniam ea quas voluptatum beatae temporibus ex ullam tempore quod! Libero, alias quaerat deserunt facere nemo veniam perferendis commodi.</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem.</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo maxime at molestias, vel repellendus nulla eveniet hic. Vel voluptas deleniti dicta sit qui, suscipit quibusdam ratione officiis quo veniam expedita.</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem.</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id omnis eos voluptatibus. Itaque commodi aspernatur magni rem consequuntur, in maiores veritatis saepe numquam laudantium? Dolor fugiat laboriosam voluptas magnam, impedit labore, voluptatem at iste rem voluptate inventore itaque quaerat commodi!</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="showRev">
+            <div class="col-xs-6">
+                <review ng-repeat="review in reviews" review="review" type="car"></review>
             </div>
         </div>
     </div>
-    <div class="row" ng-if="showRev">
-        <div class="col-xs-6">
-            <review ng-repeat="review in reviews" review="review" type="car"></review>
-        </div>
-    </div>
-</div>
 </section>
