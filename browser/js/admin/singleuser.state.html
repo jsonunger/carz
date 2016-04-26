@@ -1,0 +1,10 @@
+
+<h4>{{ user.email }}</h4>
+<button class="btn btn-success" ng-click='getOrders()'>orders</button>
+<button class="btn btn-danger" ng-click='getReviews()'>reviews</button>
+<button class="btn btn-info" ng-click='getUserInfos()'>userInfo</button>
+
+<div ng-repeat="order in orders" ng-show="orderActive">
+    {{ order.label }}<input ng-model="order.value">
+</div>
+

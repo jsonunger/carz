@@ -1,1 +1,4 @@
-<user user="user" ng-repeat="user in users"></user>
+<ul ng-repeat="user in users">
+    <li><a ui-sref="admin.singleuser({userId: user._id})">{{ user.name }}</a></li>
+    <li>{{ user.email }}</li>
+</ul>

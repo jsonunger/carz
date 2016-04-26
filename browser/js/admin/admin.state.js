@@ -13,7 +13,7 @@ app.config($stateProvider => {
 			cars: (CarFactory, $http) => CarFactory.getCars()
 		}
 	})
-	.state('admin.user', {
+	.state('admin.users', {
 		url:'/user',
 		templateUrl: '/js/admin/admin.user.html'
 	})
@@ -33,16 +33,32 @@ app.config($stateProvider => {
             }
         }
     })
-    .state('admin.user.orders', {
-    	url: '/order',
-    	templateUrl: '/js/admin/admin.user.orders.html'
-    })
-    .state('admin.user.reviews', {
-    	url: '/order',
-    	templateUrl: '/js/admin/admin.user.reviews.html'
-    })
-    .state('admin.user.userInfo', {
-    	url: '/order',
-    	templateUrl: '/js/admin/admin.user.userInfo.html'
+    .state('admin.singleuser', {
+    	url: '/:userId',
+    	templateUrl: '/js/admin/singleuser.state.html',
+        controller: "SingleUserCtlr",
+        resolve: {
+            orders : function($stateParams, OrderFactory) {
+                return OrderFactory.getAllCarts($stateParams.userId);
+            },
+            // reviews: function($stateParams, ReviewFactory) {
+            //     return ReviewFactory.getUserReviews($stateParams.userId);
+            // },
+            user: function($stateParams, UserFactory){
+                return UserFactory.getUser($stateParams.userId);
+            }
+        }
     })
 });
+
+
+
+
+
+
+
+
+
+
+
+
