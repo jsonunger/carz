@@ -6,7 +6,7 @@
 
 <div ng-repeat="order in orders" ng-show="orderActive" class="thumbnail">
     <h4>Order</h4>
-    <button class="btn btn-success">SAVE</button>
+    <button class="btn btn-success" ng-click="saveOrder(order)">SAVE</button>
     <button class="btn btn-danger">DELETE</button>
     <div ng-repeat="prop in order" class="row">
         <div class="col-xs-2" style="text-align: right">{{ prop.label }}: </div><input ng-model="prop.value" class='col-xs-9'>
@@ -22,7 +22,7 @@
 </div>
 
 <div ng-show="userActive" class="thumbnail">
-    <button class="btn btn-success">SAVE</button>
+    <button class="btn btn-success" ng-click="saveUser()">SAVE</button>
     <h4>User Info</h4>
     <div ng-repeat="prop in user" class="row">
         <div class="col-xs-2" style="text-align: right">{{ prop.label }}: </div><input ng-model="prop.value" class='col-xs-9'>

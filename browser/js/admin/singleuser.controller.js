@@ -44,9 +44,14 @@ app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $state
         ReviewFactory.deleteReview(user._id, id);
     };
 
-    $scope.saveOrder = () =>{
-
-    }
+    $scope.saveOrder = (order) =>{
+        let updateOrder = {};
+        order.forEach(prop => {
+            if(prop.label !== 'cars'){
+                updateOrder[prop.label] = prop.value;
+            }
+        });
+    };
 
     $scope.saveUser = () =>{
 
