@@ -8,7 +8,8 @@
             <div class="col-xs-2"><button ng-click="addToCart()">ADD TO CART</button></div>
             <div class="row">
                 <div class="col-sm-6">
-                    <img class="img-thumbnail" ng-src="{{ mainImage }}">
+                    <img class="img-thumbnail" ng-src="{{ car.photo[0] }}">
+                    <div><img class="smaller-thumbnail" ng-src="{{image}}" alt="" ng-repeat="image in car.photo" ></div>
                     <div class="stars" ng-if="reviews.length">
                         <div class="stars-filled left">
                             <span ng-repeat="i in rating(car.rating) track by $index">★</span> <a style="font-size: 14px" ng-click="showReviews()">({{reviews.length}})</a>
