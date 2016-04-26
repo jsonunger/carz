@@ -27,6 +27,7 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 	$scope.shippingCost = $scope.order.cars.length * 125;
 	$scope.tax = $scope.order.price * 0.075;
 	$scope.total = $scope.order.price + $scope.shippingCost + $scope.tax;
+	$scope.total = Math.ceil($scope.total);
 
 	$scope.submitOrder = function(){
 		//For populating cars
@@ -46,6 +47,7 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 			$state.go('order-complete');
 		});
 	};
+
 	$scope.createPayment = () => {
 		Stripe.card.createToken($scope.card, (status, res) => {
 			let body = {
@@ -55,7 +57,16 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 				description: 'charge for carz.tech'
 			};
 			$http.post('/api/stripe', body)
-			.catch($log.error);
+			.then(res => {
+				if(res.data === 'succeeded') {
+					order.complete = true;
+					$http.put("/api/users/" + user._id +  "/orders/" + order._id, order)
+					.then(() => $state.go('order-complete'))
+				}
+			})
+			.catch(()=> {
+				alert('Problem with your payment \nPlease Try Again or Call 911');
+			});
 		});
 	}
 });
