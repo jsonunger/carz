@@ -17,4 +17,10 @@ app.controller('CarCtrl', function($scope, CarFactory, currentCar, user, reviews
     		$state.go('order-cart', {orderId: updatedOrder._id});
     	});
     };
+
+    $scope.mainPhoto = currentCar.photo[0];
+
+    $scope.changeMainPhoto = function(img){
+      $scope.mainPhoto = img;
+    };
 });
