@@ -1,7 +1,6 @@
-app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $stateParams){
+app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $stateParams, ReviewFactory){
     $scope.user = user;
 
-    // $scope.reviews = reviews;
     $scope.orders = [];
     $scope.reviews = [];
     $scope.orderActive = false;
@@ -21,8 +20,9 @@ app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $state
     reviews.forEach(rev => {
         $scope.reviews.push([
             {label: "car", value: rev.car.make + ", " + rev.car.model },
-            {label: 'review content', value: rev.content },
-            {label: "stars", value: rev.stars }
+            {label: 'content', value: rev.content },
+            {label: "stars", value: rev.stars },
+            {label: 'id', value: rev._id }
         ]);
     });
 
@@ -38,6 +38,18 @@ app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $state
         } else {
             $scope.reviewsActive = true;
         }
+    };
+
+    $scope.deleteReview = (id) => {
+        ReviewFactory.deleteReview(user._id, id);
+    };
+
+    $scope.saveOrder = () =>{
+
+    }
+
+    $scope.saveUser = () =>{
+
     }
 
 
@@ -50,7 +62,6 @@ app.controller('SingleUserCtlr', function ($scope, orders, user, reviews, $state
     };
 
     $scope.getUserInfo = () => {
-        console.log($scope.user);
         if($scope.userActive) {
             $scope.userActive = false;
         } else {
