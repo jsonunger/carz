@@ -35,14 +35,14 @@ app.config($stateProvider => {
     })
     .state('admin.user.orders', {
     	url: '/order',
-    	templateUrl: '/js/admin/admin.order.html'
+    	templateUrl: '/js/admin/admin.user.order.html'
     })
     .state('admin.user.reviews', {
     	url: '/order',
-    	templateUrl: '/js/admin/admin.reviews.html'
+    	templateUrl: '/js/admin/admin.user.reviews.html'
     })
     .state('admin.user.userInfo', {
     	url: '/order',
-    	templateUrl: '/js/admin/admin.userInfo.html'
+    	templateUrl: '/js/admin/admin.user.userInfo.html'
     })
 });
