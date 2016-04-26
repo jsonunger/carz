@@ -52,16 +52,18 @@
 // })
 
 
-app.directive('user', () => {
+app.directive('user', (OrderFactory, UserFactory, ReviewFactory) => {
 	return {
 		restrict: 'E',
 		scope: {user: "="},
 		templateUrl: '/js/admin/user.directive.html',
 		link: (scope) => {
 			scope.getUsers = () => user;
+			scope.getReviews = (id) => ReviewFactory.getCarReviews(id);
+			scope.getOrders = (id) => OrderFactory.getOrder(id);
 		}
-	}
-})
+	};
+});
 
 
 
