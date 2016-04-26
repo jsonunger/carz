@@ -1,0 +1,7 @@
+<div>
+    <ul class="thumbnail">
+        <button class="btn btn-success" ng-click="save()">SAVE</button>
+        <div  ng-repeat="prop in newCar" class="row"><div class="col-xs-3" style="text-align: right">{{ prop.label }} :</div>
+        <input ng-model="prop.value" class="col-xs-9" ng-disabled="prop.disable"></div>
+    </ul>
+</div>
