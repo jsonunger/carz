@@ -10,7 +10,6 @@ router.post('/', (req, res, next) => {
 			res.send(charge.status);
 		}
 	})
-
 })
 
 module.exports = router;
