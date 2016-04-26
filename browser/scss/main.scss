@@ -23,6 +23,9 @@ body {
 	display: inline-block;
 	width: (100% / 5);
 }
+.thankyou{
+	width: 100%;
+}
 
 @import 'directives/main';
 @import 'home/main';

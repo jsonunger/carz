@@ -12,5 +12,11 @@ app.factory('ReviewFactory', function ($http) {
       .then(parseData);
    };
 
+   ReviewFactory.deleteReview = function (userId, reviewId) {
+      return $http.delete('/api/users/'+ userId +'/reviews/' + reviewId)
+      .then(parseData);
+   };
+
+
    return ReviewFactory;
 });

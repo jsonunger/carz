@@ -5,7 +5,7 @@ var Review = mongoose.model('Review');
 module.exports = router;
 
 router.get('/', (req,res,next) => {
-  Review.find({user: req.loggedIn._id}).populate('car')
+  Review.find({user: req.requestedUser._id}).populate('car')
   .then(reviews => res.json(reviews))
   .catch(next);
 });

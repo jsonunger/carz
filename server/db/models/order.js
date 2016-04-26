@@ -21,6 +21,14 @@ var schema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    shipping: {
+        type: Number,
+        default: 0
+    },
+    tax: {
+        type: Number,
+        default: 0
+    },
     shipping: require('./address.js'),
     billing: require('./address.js')
 });

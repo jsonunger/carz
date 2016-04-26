@@ -1,7 +1,7 @@
 app.factory('ModalFactory', function ($uibModal, $rootScope) {
    var ModalFactory = {};
 
-   ModalFactory.createModal = function (templateUrl, scope, size, animation) {
+   ModalFactory.createModal = function (templateUrl, scope, type, size, animation) {
       animation = animation || true;
       size = size || 'lg';
       scope = scope || $rootScope;
@@ -10,13 +10,14 @@ app.factory('ModalFactory', function ($uibModal, $rootScope) {
          templateUrl: templateUrl,
          controller: 'ModalCtrl',
          size: size,
-         //Resolve can be used to fill out current user address
-         //psudocode down here
-         // resolve: {
-         //    currentInfo: function() {
-         //       return userfactory user info
-         //    }
-         // }
+         resolve: {
+            order: function () {
+               return scope.order;
+            },
+            type: function () {
+               return type;
+            }
+         },
          scope: scope
       });
    };

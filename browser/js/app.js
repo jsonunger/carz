@@ -51,9 +51,4 @@ app.run(function ($rootScope, AuthService, $state, OrderFactory) {
         });
 
     });
-
-    OrderFactory.findOrCreateCart()
-    .then(function(order){
-        $rootScope.order = order;
-    });
 });
