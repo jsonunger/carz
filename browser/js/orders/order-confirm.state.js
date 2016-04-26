@@ -6,6 +6,9 @@ app.config(function($stateProvider){
 		resolve: {
 			order: function (OrderFactory, $stateParams) {
 				return OrderFactory.getOrder($stateParams.orderId);
+			},
+			user: function (AuthService){
+				return AuthService.getLoggedInUser();
 			}
 		}
 	});

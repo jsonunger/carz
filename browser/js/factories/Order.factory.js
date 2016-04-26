@@ -8,12 +8,11 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		.then(parseData);
 	};
 
-	OrderFactory.addToOrder = function(carId){
-		var order = $rootScope.order;
+	OrderFactory.addToOrder = function(carId, order){
 		if(order.cars.indexOf(carId) !== -1) return;
 		order.cars.push(carId);
 
-		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, {cars: order.cars})
 		.then(parseData);
 	};
 
@@ -35,13 +34,28 @@ app.factory('OrderFactory', function($http, AuthService, $rootScope){
 		if(index === -1) return;
 		order.cars.splice(index, 1);
 
-		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, {cars: order.cars})
 		.then(parseData)
 		.then(updatedOrder => {
 			$rootScope.order = updatedOrder;
 			return OrderFactory.getOrder(updatedOrder._id);
 		});
-	};	
+	};
+
+	OrderFactory.updateOrder = function(order) {
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		.then(parseData);
+	};
+
+	OrderFactory.submitOrder = function(order) {
+		return $http.put('/api/users/' + order.user + '/orders/' + order._id, order)
+		.then(parseData);
+	};
+
+	OrderFactory.checkOrder = function () {
+		if (!$rootScope.order) return OrderFactory.findOrCreateCart();
+		else return Promise.resolve($rootScope.order);
+	};
 
 	return OrderFactory;
 });
