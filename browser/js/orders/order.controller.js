@@ -32,6 +32,4 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 	$scope.shippingCost = $scope.order.cars.length * 125;
 	$scope.tax = $scope.order.price * 0.075;
 	$scope.total = $scope.order.price + $scope.shippingCost + $scope.tax;
-
-	console.log(order);
 });

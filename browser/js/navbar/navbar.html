@@ -18,6 +18,9 @@
                     <li ng-show="user.isAdmin">
                         <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
                     </li>
+                    <li>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                    </li>
                 </ul>
                 <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
                 <div ng-show="user" class="welcome">
@@ -33,6 +36,9 @@
                 </li>
                 <li ng-show="user.isAdmin">
                     <a ui-sref-active="active" ui-sref="admin">{{ admin.label }}</a>
+                </li>
+                <li>
+                    <a ui-sref="order-cart({orderId: order._id})"><i class="glyphicon glyphicon-shopping-cart"></i></a>
                 </li>
             </ul>
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
