@@ -1,1 +1,3 @@
-<user user="user" ng-repeat="user in users"></user>
+<div ng-repeat="user in users" class="list-group">
+    <button class="list-group-item" ui-sref="admin.singleuser({userId: user._id})">{{ user.name }} - {{ user.email }} </button>
+</div>

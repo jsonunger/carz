@@ -1,0 +1,30 @@
+
+<h4>{{ user[0].value }} {{ user[0].name }}</h4>
+<button class="btn btn-success" ng-click='getOrders()'>orders</button>
+<button class="btn btn-danger" ng-click='getReviews()'>reviews</button>
+<button class="btn btn-info" ng-click='getUserInfo()'>userInfo</button>
+
+<div ng-repeat="order in orders" ng-show="orderActive" class="thumbnail">
+    <h4>Order</h4>
+    <button class="btn btn-success" ng-click="saveOrder(order)">SAVE</button>
+    <button class="btn btn-danger">DELETE</button>
+    <div ng-repeat="prop in order" class="row">
+        <div class="col-xs-2" style="text-align: right">{{ prop.label }}: </div><input ng-model="prop.value" class='col-xs-9'>
+    </div>
+</div>
+
+<div ng-repeat="review in reviews" ng-show="reviewsActive" class="thumbnail">
+    <h4>Review</h4>
+    <button class="btn btn-danger" ng-click="deleteReview(review[3].value)">DELETE</button>
+    <div ng-repeat="prop in review" class="row">
+        <div class="col-xs-2" style="text-align: right">{{ prop.label }}: </div><input ng-model="prop.value" class='col-xs-9'>
+    </div>
+</div>
+
+<div ng-show="userActive" class="thumbnail">
+    <button class="btn btn-success" ng-click="saveUser()">SAVE</button>
+    <h4>User Info</h4>
+    <div ng-repeat="prop in user" class="row">
+        <div class="col-xs-2" style="text-align: right">{{ prop.label }}: </div><input ng-model="prop.value" class='col-xs-9'>
+    </div>
+</div>
