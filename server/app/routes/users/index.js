@@ -57,8 +57,6 @@ router.delete('/:id', (req, res, next) => {
 	} else {res.sendStatus(401)}
 });
 
-
-router.use("/:id/orders", require('../orders'));
 router.use('/:id/reviews', require('./reviews'));
 module.exports = router;
 
