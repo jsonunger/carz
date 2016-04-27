@@ -1,9 +1,7 @@
 app.controller('AdminCtrl', ($scope, users, cars, UserFactory) => {
 	$scope.users = users;
 
-    $scope.users.forEach((user)=>{
-        user.exist = true;
-    });
+    $scope.users.forEach( user=> user.exist = true );
 
 	$scope.cars = cars.map((car) => {
 		return [
@@ -22,9 +20,7 @@ app.controller('AdminCtrl', ($scope, users, cars, UserFactory) => {
 
     $scope.eraseUser = (user) => {
         user.exist = false;
-        UserFactory.deleteUser(user._id)
-        .then(() => {
-        });
+        UserFactory.deleteUser(user._id);
     };
 
     $scope.newCar = [];
