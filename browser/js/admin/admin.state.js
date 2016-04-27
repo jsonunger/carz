@@ -39,7 +39,7 @@ app.config($stateProvider => {
         controller: "SingleUserCtlr",
         resolve: {
             orders : function($stateParams, OrderFactory) {
-                return OrderFactory.getAllCarts($stateParams.userId);
+                return OrderFactory.getAllOrders({user: $stateParams.userId});
             },
             reviews: function($stateParams, ReviewFactory) {
                 return ReviewFactory.getUserReviews($stateParams.userId);

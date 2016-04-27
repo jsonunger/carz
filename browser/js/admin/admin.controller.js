@@ -1,5 +1,10 @@
-app.controller('AdminCtrl', ($scope, users, cars) => {
+app.controller('AdminCtrl', ($scope, users, cars, UserFactory) => {
 	$scope.users = users;
+
+    $scope.users.forEach((user)=>{
+        user.exist = true;
+    });
+
 	$scope.cars = cars.map((car) => {
 		return [
 			{ label: 'make', value: car.make },
@@ -14,6 +19,13 @@ app.controller('AdminCtrl', ($scope, users, cars) => {
             {label: 'id', value: car._id}
 		]
 	})
+
+    $scope.eraseUser = (user) => {
+        user.exist = false;
+        UserFactory.deleteUser(user._id)
+        .then(() => {
+        });
+    };
 
     $scope.newCar = [];
     $scope.cars[0].forEach((car) => {
