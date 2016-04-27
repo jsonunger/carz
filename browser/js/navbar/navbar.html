@@ -1,4 +1,4 @@
-<header class="navbar navbar-static-top">
+<nav class="navbar navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapse-toggle" ng-click="navCollapse = !navCollapse">
@@ -25,7 +25,7 @@
                 <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
                 <button ng-show="!user" ui-sref="login" class="btn signup-button">SignUp</button>
                 <div ng-show="user" class="welcome">
-                    <span>Welcome, {{ user.email }}!</span>
+                    <span>Welcome, {{ user.name ? user.name.split(' ')[0] : user.email }}!</span>
                     <a ng-click="logout()">Logout</a>
                 </div>
             </div>
@@ -45,9 +45,9 @@
             <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
             <button ng-show="!user" ui-sref="signup" class="btn login-button">SignUp</button>
             <div ng-show="user" class="welcome">
-                <span>Welcome, {{ user.email }}!</span>
+                <span>Welcome, {{ user.name ? user.name.split(' ')[0] : user.email }}!</span>
                 <a ng-click="logout()">Logout</a>
             </div>
         </div>
     </div>
-</header>
+</nav>
