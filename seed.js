@@ -25,7 +25,6 @@ var User = mongoose.model('User');
 var Car = mongoose.model('Car');
 var Review = mongoose.model('Review');
 var Order = mongoose.model('Order');
-// var rp = require('request-promise');
 var lorem = require('lorem-ipsum');
 
 var wipeCollections = function () {
