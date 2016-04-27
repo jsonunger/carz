@@ -51,7 +51,7 @@ var seedUsers = function () {
         isAdmin: true
     },
     {
-        name: 'I Money',
+        name: 'Immad',
         email: 'i.mohamed037@gmail.com',
         password: 'qwerty',
         isAdmin: true,
@@ -63,7 +63,7 @@ var seedUsers = function () {
             zip: '10203'
         },
         billing: {
-            name: 'I Money',
+            name: 'Immad',
             street: '200 Neverland Ranch',
             city: 'Neverland',
             state: 'CO',

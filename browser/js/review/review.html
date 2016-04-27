@@ -5,7 +5,8 @@
          </div>
       </span>
       <span class="right about" ng-show="type === 'car'">By <span style="font-weight: bold">{{review.user.email}}</span></span>
-      <car-info class="right" ng-show="type === 'user'" car="review.car"></car-info>
+      <div class="col-xs-12" ng-show="type === 'user'"> <car-info class="right" ng-show="type === 'user'" car="review.car"></car-info></div>
+      
 </div>
 <div class="row">
    <div class="col-xs-12">

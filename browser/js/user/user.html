@@ -1,37 +1,112 @@
 <section id="user">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-2">
-				<h3>{{user.name}}</h3>
-			</div>
-			<div class="col-xs-10" style='text-align: right'>
-			</div>
-			<form class="col-xs-12">
-             <h4>User Infos:</h4>
-			  <fieldset class="form-group" ng-repeat="prop in newUserObj">
-			    <label for="formGroupExampleInput">{{ prop.label }} :</label>
-			    <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
-			  </fieldset>
-               <h4>Shipping Address:</h4>
-              <fieldset class="form-group" ng-repeat="prop in shipping">
-                <label for="formGroupExampleInput">{{ prop.label }} :</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
-              </fieldset>
-              <div class="radio">
-                  <label>
-                  <input type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" ng-click="toggleBilling()" ng-model="checked">
-                   Select if Billing and Shipping Address are same
-                  </label>
-              </div>
-              <div ng-hide="hideBilling">
-                  <h4>Billing Address:</h4>
-                  <fieldset class="form-group" ng-repeat="prop in billing">
-                    <label for="formGroupExampleInput">{{ prop.label }} :</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" ng-model="prop.value">
-                  </fieldset>
-              </div>
-			</form>
-		</div>
-		<button type="button" class="btn btn-success" ng-click="save()">SAVE</button>
-	</div>
+    <div class="container">
+        <div class="col-xs-2">
+            <h3>{{user.name}}</h3>
+        </div>
+        <form class="col-xs-12">
+            <uib-accordion close-others="oneAtATime">
+                <uib-accordion-group is-open="status.isFirstOpen">
+                    <uib-accordion-heading>
+                        User Info
+                    </uib-accordion-heading>
+                    <form name="userInfo">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" placeholder="Name" ng-model="user.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="E-Mail Address">E-Mail</label>
+                            <input type="email" class="form-control" placeholder="E-Mail" ng-model="user.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="Confirm E-Mail Address">Confirm E-Mail</label>
+                            <input type="email" class="form-control" placeholder="E-Mail" ng-model="confirmEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="Phone Number">Phone Number</label>
+                            <input type="text" class="form-control" placeholder="Phone Number" ng-model="user.phone">
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                </uib-accordion-group>
+                <uib-accordion-group>
+                    <uib-accordion-heading>
+                        Shipping Address
+                    </uib-accordion-heading>
+                    <form name="shippingInfo">
+                        <div class="form-group">
+                            <label for="Street">Street</label>
+                            <input type="text" class="form-control" placeholder="Street" ng-model="user.shipping.street">
+                        </div>
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <input type="text" class="form-control" placeholder="City" ng-model="user.shipping.city">
+                        </div>
+                        <div class="form-group">
+                            <label for="State">State</label>
+                            <input type="text" class="form-control" placeholder="State" ng-model="user.shipping.state">
+                        </div>
+                        <div class="form-group">
+                            <label for="Zip">Zip Code</label>
+                            <input type="text" class="form-control" placeholder="Zip Code" ng-model="user.shipping.zip">
+                        </div>
+                    </form>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-click="toggleBilling()"> Same Shipping & Billing Address?
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                </uib-accordion-group>
+                <uib-accordion-group ng-show="sameAddress">
+                    <uib-accordion-heading>
+                        Billing Address
+                    </uib-accordion-heading>
+                    <form name="billingInfo">
+                        <div class="form-group">
+                            <label for="Street">Street</label>
+                            <input type="text" class="form-control" placeholder="Street" ng-model="user.billing.street">
+                        </div>
+                        <div class="form-group">
+                            <label for="City">City</label>
+                            <input type="text" class="form-control" placeholder="City" ng-model="user.billing.city">
+                        </div>
+                        <div class="form-group">
+                            <label for="State">State</label>
+                            <input type="text" class="form-control" placeholder="State" ng-model="user.billing.state">
+                        </div>
+                        <div class="form-group">
+                            <label for="Zip">Zip Code</label>
+                            <input type="text" class="form-control" placeholder="Zip Code" ng-model="user.billing.zip">
+                        </div>
+                    </form>
+                </uib-accordion-group>
+                <uib-accordion-group is-open="status.open">
+                    <uib-accordion-heading>
+                        Previous Orders
+                    </uib-accordion-heading>
+                    <table class="table table-hover" ng-repeat="orders in previousOrders">
+                        <th>Order# {{orders._id}} - {{orders.datePlaced | date}}</th>
+                        <th>
+                            <p class="pull-right">Cost</p>
+                        </th>
+                        <tr ng-repeat=" cars in orders.orderedCars">
+                            <td>{{cars.year + ' '+ cars.make + ' '+ cars.model}}</td>
+                            <td>
+                                <p class="pull-right">{{cars.price | currency:$:0}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </uib-accordion-group>
+                <uib-accordion-group>
+                    <uib-accordion-heading>
+                        Reviews
+                    </uib-accordion-heading>
+                    <review ng-repeat="review in reviews" review="review" type="user"></review>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                </uib-accordion-group>
+            </uib-accordion>
+    </div>
+    </form>
+    </div>
 </section>
