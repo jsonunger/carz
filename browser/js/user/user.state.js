@@ -6,20 +6,15 @@ app.config(($stateProvider) => {
 		templateUrl: '/js/user/user.html',
 		controller: 'UserCtrl',
 		resolve: {
-			user: (UserFactory, AuthService, $http) => {
-				return AuthService.getLoggedInUser()
-				.then(user =>  $http.get('/api/users/' + user._id))
-				.then( user => user.data);
-			}
+			user: (UserFactory, AuthService) => {
+				return AuthService.getLoggedInUser();
+			},
+			// previousOrders: (OrderFactory) => {
+			// 	return OrderFactory.getPreviousOrders();
+			// },
+			userReviews: (ReviewFactory, user) => {
+				return ReviewFactory.getUserReviews(user._id);
+			} 
 		}
-	})
-	.state('user.previousOrders', {
-		url: '/prev',
-		templateUrl: '/js/user/user.prev.html',
-		resolve: {
-			orders: (UserFactory, $stateParams) => {
-				return UserFactory.getOrder()
-			}
-		}
-	})
-})
+	});
+});

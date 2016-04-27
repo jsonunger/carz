@@ -26,4 +26,6 @@ app.controller('CarCtrl', function($scope, CarFactory, currentCar, user, reviews
     $scope.changeMainPhoto = function(img){
       $scope.mainPhoto = img;
     };
+
+    $scope.user = user;
 });
