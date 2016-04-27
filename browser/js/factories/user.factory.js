@@ -9,7 +9,7 @@ app.factory('UserFactory', ($http) => {
 		.then(parseData);
 	};
 	UserFactory.updateUser = (id, body) => {
-		return $http.put('/api/users/' + id, body);
+		return $http.put('/api/users/' + id, body).then(parseData);
 	}
 
 	UserFactory.createUser = (body) => {
