@@ -11,5 +11,11 @@ app.factory('UserFactory', ($http) => {
 	UserFactory.updateUser = (id, body) => {
 		return $http.put('/api/users/' + id, body).then(parseData);
 	}
+
+	UserFactory.createUser = (body) => {
+		return $http.post('/api/users/', body)
+		.then(parseData);
+	}
+
 	return UserFactory;
 });
