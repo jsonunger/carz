@@ -14,7 +14,8 @@ app.factory('CarFactory', function ($http) {
    };
 
    CarFactory.deleteCar = function(id) {
-      return $http.delete('/api/cars/' + id);
+      return $http.delete('/api/cars/' + id)
+      .then(parseData);
    }
 
    CarFactory.updateCar = function(id, body) {
@@ -23,7 +24,13 @@ app.factory('CarFactory', function ($http) {
    }
 
    CarFactory.addCar = function(body){
-      return $http.post('/api/cars/', body);
+      return $http.post('/api/cars/', body)
+      .then(parseData);
+   }
+
+   CarFactory.getCarouselCars = function() {
+      return $http.get('/api/cars/carousel')
+      .then(parseData);
    }
 
    return CarFactory;
