@@ -1,3 +1,8 @@
 <div ng-repeat="user in users" class="list-group">
-    <button class="list-group-item" ui-sref="admin.singleuser({userId: user._id})">{{ user.name }} - {{ user.email }} </button>
+    <div class="row" ng-show="user.exist">
+        <button class="col-xs-9" ui-sref="admin.singleuser({userId: user._id})">{{ user.name }} - {{ user.email }} </button>
+        <div class="col-xs-2">
+            <button class="btn btn-danger" ng-click="eraseUser(user)">DELETE</button>
+        </div>
+    </div>
 </div>

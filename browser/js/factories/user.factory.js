@@ -17,5 +17,10 @@ app.factory('UserFactory', ($http) => {
 		.then(parseData);
 	}
 
+    UserFactory.deleteUser = (id) => {
+        return $http.delete('/api/users/' + id)
+        .then(parseData);
+    }
+
 	return UserFactory;
 });
