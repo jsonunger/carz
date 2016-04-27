@@ -9,9 +9,9 @@ app.config(($stateProvider) => {
 			user: (UserFactory, AuthService) => {
 				return AuthService.getLoggedInUser();
 			},
-			// previousOrders: (OrderFactory) => {
-			// 	return OrderFactory.getPreviousOrders();
-			// },
+			previousOrders: (OrderFactory) => {
+				return OrderFactory.getPreviousOrders();
+			},
 			userReviews: (ReviewFactory, user) => {
 				return ReviewFactory.getUserReviews(user._id);
 			} 

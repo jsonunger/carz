@@ -17,6 +17,7 @@ var schema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    datePlaced: Date,
     price: {
         type: Number,
         default: 0
@@ -75,6 +76,7 @@ schema.post('save', function (doc, next) {
     if (!doc.completed) return next();
 
     var updates = doc.cars.map(function (car) {
+        console.log(car);
         car.quantity--; // Reduces the quantity of all of the cars in the purchase by 1
         return car.save();
     }); // updates is an array of Promises

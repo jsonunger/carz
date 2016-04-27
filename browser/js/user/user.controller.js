@@ -1,7 +1,10 @@
-app.controller('UserCtrl', function($scope, UserFactory, user, userReviews, $state) {
+app.controller('UserCtrl', function($scope, UserFactory, user, userReviews, previousOrders) {
 	$scope.user = user;
     $scope.reviews = userReviews;
+    $scope.previousOrders = previousOrders;
 
+    console.log($scope.previousOrders);
+    
     $scope.oneAtATime = true;
     $scope.status = {
         isFirstOpen: true,
@@ -10,6 +13,9 @@ app.controller('UserCtrl', function($scope, UserFactory, user, userReviews, $sta
 
     $scope.sameAddress = false;
     $scope.toggleBilling = () => $scope.sameAddress = !$scope.sameAddress;
+    // $scope.getPrice = function(arr){
+    //     return arr.reduce((prevVal, currentVal) => prevVal + currentVal);
+    // };
 
     $scope.save = function(){
         if($scope.sameAddress) $scope.user.billing = $scope.user.shipping;

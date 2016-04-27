@@ -27,7 +27,7 @@
                             <input type="text" class="form-control" placeholder="Phone Number" ng-model="user.phone">
                         </div>
                     </form>
-                <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
                 </uib-accordion-group>
                 <uib-accordion-group>
                     <uib-accordion-heading>
@@ -56,7 +56,7 @@
                             <input type="checkbox" ng-click="toggleBilling()"> Same Shipping & Billing Address?
                         </label>
                     </div>
-                <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
                 </uib-accordion-group>
                 <uib-accordion-group ng-show="sameAddress">
                     <uib-accordion-heading>
@@ -85,14 +85,16 @@
                     <uib-accordion-heading>
                         Previous Orders
                     </uib-accordion-heading>
-                    <table class="table table-hover">
-                        <th>Order</th>
-                        <th>Total</th>
-                        <th>Date</th>
-                        <tr>
-                            <td>Test</td>
-                            <td>Test</td>
-                            <td>Test</td>
+                    <table class="table table-hover" ng-repeat="orders in previousOrders">
+                        <th>Order# {{orders._id}} - {{orders.datePlaced | date}}</th>
+                        <th>
+                            <p class="pull-right">Cost</p>
+                        </th>
+                        <tr ng-repeat=" cars in orders.orderedCars">
+                            <td>{{cars.year + ' '+ cars.make + ' '+ cars.model}}</td>
+                            <td>
+                                <p class="pull-right">{{cars.price | currency:$:0}}</p>
+                            </td>
                         </tr>
                     </table>
                 </uib-accordion-group>
@@ -101,7 +103,7 @@
                         Reviews
                     </uib-accordion-heading>
                     <review ng-repeat="review in reviews" review="review" type="user"></review>
-                <button type="button" class="btn btn-success" ng-click="save()">Save</button>
+                    <button type="button" class="btn btn-success" ng-click="save()">Save</button>
                 </uib-accordion-group>
             </uib-accordion>
     </div>

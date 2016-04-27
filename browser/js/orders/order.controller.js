@@ -35,6 +35,7 @@ app.controller('orderCtrl', function($scope, OrderFactory, $state, $uibModal, $r
 			popCars.orderedCars = popCars.cars;
 			popCars.cars = [];
 			popCars.completed = true;
+			popCars.datePlaced = Date.now();
 			return OrderFactory.submitOrder(popCars);
 		})
 		.then(() => $state.go('order-complete'));
