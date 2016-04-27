@@ -10,14 +10,10 @@ app.controller('CarCtrl', function($scope, CarFactory, currentCar, user, reviews
       $scope.showRev = !$scope.showRev;
    };
 
-   $scope.addToCart = function(){
-      OrderFactory.checkOrder()
-      .then(function(order) {
-      	return OrderFactory.addToOrder($scope.car._id, order);
-      })
-    	.then(function(updatedOrder){
-    		$rootScope.order = updatedOrder;
-    		$state.go('order-cart', {orderId: updatedOrder._id});
+   $scope.addToOrder = function(car){
+      OrderFactory.addToOrder(car)
+    	.then(function(){
+    		$state.go('order-cart');
     	});
     };
 

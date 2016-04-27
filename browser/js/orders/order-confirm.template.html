@@ -116,6 +116,6 @@
         <br>
         <h4>Order Total:</h4>
         <p>{{total| currency:$:0 }}</p>
-        <button type="button" class="btn btn-info btn-block" ng-click="createPayment()">Place Your Order</button>
+        <button type="button" class="btn btn-info btn-block" ng-click="createPayment()" ng-disabled="!order.shipping.name || (!sameAddress && !order.billing.name)">Place Your Order</button>
     </div>
 </div>
