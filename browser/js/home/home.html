@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3" ng-repeat="review in adminReviews">
-                <a ui-sref="car({carId: car._id})"><img class="img-circle" style='width:60%'ng-src="{{review.image}}" /></a>
+                <a ui-sref="review({id: car._id})"><img class="img-circle" style='width:60%'ng-src="{{review.image}}" /></a>
                 <h2>{{review.name}}</h2>
                 <p>{{review.description}}</p>
             </div>
