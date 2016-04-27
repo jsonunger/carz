@@ -17,6 +17,12 @@ router.get('/', (req, res, next) => {
 	}
 });
 
+router.get('/carousel', (req, res, next) => {
+	Car.find().limit(4)
+	.then(cars => res.json(cars))
+	.catch(next);
+})
+
 router.post('/', (req, res, next) => {
 	if (req.user && req.user.isAdmin) {
 		Car.create(req.body)

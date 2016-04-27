@@ -1,15 +1,15 @@
 <div class="row" id="home">
     <uib-carousel interval="5000" class="col-md-12">
-        <uib-slide ng-repeat="image in images">
-            <img height="300" ng-src="{{ image }}" />
+        <uib-slide ng-repeat="car in carousel">
+            <img height="300" ng-src="{{ car.photo[0] }}" ui-sref="car({carId: car._id})"/>
         </uib-slide>
     </uib-carousel>
     <div class="container">
         <div class="row">
             <div class="col-md-3" ng-repeat="review in adminReviews">
-                <a href="#"><img class="img-circle" ng-src="{{review.image}}" /></a>
+                <a ui-sref="car({carId: car._id})"><img class="img-circle" style='width:60%'ng-src="{{review.image}}" /></a>
                 <h2>{{review.name}}</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum accusantium atque reiciendis velit odit, optio, illum voluptatem autem, voluptas modi nobis ad consequatur quibusdam cupiditate unde explicabo veritatis cum! Dignissimos?</p>
+                <p>{{review.description}}</p>
             </div>
         </div>
     </div>
